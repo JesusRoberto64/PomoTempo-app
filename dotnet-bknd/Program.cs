@@ -20,35 +20,8 @@ app.MapGet("/",(IDbServices services) =>{
 });
 
 
-/*
-app.MapGet("/", () => {
-    List<String> misionesLista = [];
-    using (var db = new AppPomoTempoContext()){
-        var misiones = db.Misiones.AsNoTracking();
-        foreach (var mision in misiones)
-        {
-            misionesLista.Add(mision.Nombre!);
-        }
-    }
-    return misionesLista;
+app.MapGet("/misiones",(IDbServices services) =>{
+    return services.misionesList();
 });
-*/
-/*
-using (var db = new AppPomoTempoContext())
-{
-    //para iterar todos los elementos.
-    //Este es el IQeurable AsNoTraking sin trakear los cambios en la DB
-    var misiones = db.Misiones.AsNoTracking(); 
-    foreach (var mision in misiones)
-    {
-        Console.WriteLine(mision.Nombre);
-    }
 
-    var fechas = db.Fechas.AsNoTracking();
-    foreach(var fecha in fechas)
-    {
-        Console.WriteLine(fecha.Fecha);
-    }
-}
-*/
 app.Run();
