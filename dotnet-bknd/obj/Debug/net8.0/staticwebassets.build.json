@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "VVc245kkxnJkM1nFnbnypjKHTV/cj2B0mghhelEYaUs=",
+  "Source": "dotnet-bknd",
+  "BasePath": "_content/dotnet-bknd",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
