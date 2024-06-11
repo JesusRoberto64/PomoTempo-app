@@ -1,4 +1,5 @@
-﻿using dotnet_bknd.Repositories.Abstract;
+﻿using dotnet_bknd.Models;
+using dotnet_bknd.Repositories.Abstract;
 using Microsoft.EntityFrameworkCore;
 
 namespace dotnet_bknd.Repositories.Implementation;
@@ -11,6 +12,26 @@ public class DbServices : IDbServices
     public DbServices(AppPomoTempoContext context)
     {
         _context = context;
+    }
+
+    public Response AddMision(Misiones mision)
+    {   
+        
+        if (string.IsNullOrEmpty(mision.Nombre))
+        {
+            return new Response { Success = false, Message ="Agrégale un nombre a la misión"};
+        }
+
+        try
+        {
+            _context.Misiones.Add(mision);
+            _context.SaveChanges();
+            return new Response { Success = true, Message = "Misión agregada exitosamente"};
+        }
+        catch (Exception)
+        {
+            return new Response{ Success = false, Message = "ERROR NO SE PUDO GUARDAR"};
+        }
     }
 
     public List<string> FechasList()
