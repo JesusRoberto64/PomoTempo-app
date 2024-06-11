@@ -16,12 +16,20 @@ builder.Services.AddScoped<IDbServices, DbServices>();
 var app = builder.Build();
 
 app.MapGet("/",(IDbServices services) =>{
-    return services.FechasList();
+    return services.GetModelContext();
 });
 
 
 app.MapGet("/misiones",(IDbServices services) =>{
     return services.misionesList();
+});
+
+app.MapGet("/horas",(IDbServices services) =>{
+    return services.HorasFromPomo();
+});
+
+app.MapGet("/fechas",(IDbServices services) =>{
+    return services.FechasList();
 });
 
 app.Run();

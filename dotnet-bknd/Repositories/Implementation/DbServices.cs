@@ -16,13 +16,30 @@ public class DbServices : IDbServices
     public List<string> FechasList()
     {
         List<string> fechasLista = new List<string>();
-        var misiones = _context.Fechas.AsNoTracking();
-        foreach(var fecha in misiones)
+        var fechas = _context.Fechas.AsNoTracking();
+        foreach(var fecha in fechas)
         {
             fechasLista.Add(fecha.Fecha.ToString());
         }
 
         return fechasLista;
+    }
+
+    public string? GetModelContext()
+    {
+        return _context.Model.ToDebugString();
+    }
+
+    public List<string> HorasFromPomo()
+    {
+        List<string> horasLista = new List<string>();
+        var horas = _context.Pomodoros.AsNoTracking();
+        foreach(var hora in horas)
+        {
+           horasLista.Add(hora.Hora.ToString());
+        }
+
+        return horasLista; 
     }
 
     public List<string> misionesList()
