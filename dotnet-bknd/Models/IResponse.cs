@@ -1,6 +1,6 @@
 ﻿namespace dotnet_bknd.Models;
 
-public class Response
+public class IResponse
 {
     public bool Success { get; set; }
     public string? Message { get; set; }

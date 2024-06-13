@@ -4,19 +4,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace dotnet_bknd.Repositories.Implementation;
 
-public class DbServices : IDbServices
+public class MisionService : IMisionService
 {
-    
     private readonly AppPomoTempoContext _context;
 
-    public DbServices(AppPomoTempoContext context)
+    public MisionService(AppPomoTempoContext context)
     {
         _context = context;
     }
 
     public IResponse AddMision(Misiones mision)
-    {   
-        
+    {
         if (string.IsNullOrEmpty(mision.Nombre))
         {
             return new IResponse { Success = false, Message ="Agrégale un nombre a la misión"};
@@ -34,36 +32,42 @@ public class DbServices : IDbServices
         }
     }
 
-    public List<string> FechasList()
+    public IResponse DeleteMision(int id)
     {
-        List<string> fechasLista = new List<string>();
-        var fechas = _context.Fechas.AsNoTracking();
-        foreach(var fecha in fechas)
+        try
         {
-            fechasLista.Add(fecha.Fecha.ToString());
+            var mision = _context.Misiones.Find(id);
+            if (mision == null)
+            {
+                return new IResponse { Success = false, Message ="Id incorrecto"};
+            }
+            _context.Misiones.Remove(mision);
+            _context.SaveChanges();
+            return new IResponse { Success = true, Message = "Misión borrada exitosamente"};
+
         }
-
-        return fechasLista;
-    }
-
-    public string? GetModelContext()
-    {
-        return _context.Model.ToDebugString();
-    }
-
-    public List<string> HorasFromPomo()
-    {
-        List<string> horasLista = new List<string>();
-        var horas = _context.Pomodoros.AsNoTracking();
-        foreach(var hora in horas)
+        catch (Exception)
         {
-           horasLista.Add(hora.Hora.ToString());
+            return new IResponse{ Success = false, Message = "ERROR NO SE PUDO BORRAR"};   
         }
-
-        return horasLista; 
     }
 
-    public List<string> misionesList()
+    public IResponse EditMision()
+    {
+        throw new NotImplementedException();
+    }
+
+    public string? GetMisionFromId(int id)
+    {
+        var mision = _context.Misiones.Find(id);
+        if (mision == null)
+        {
+            return null;
+        }
+        return mision.Nombre;
+    }
+
+    public List<string> MisionList()
     {
         List<string> misionesLista = new List<string>();
         var misiones = _context.Misiones.AsNoTracking();
@@ -71,7 +75,7 @@ public class DbServices : IDbServices
         {
             misionesLista.Add(mision.Nombre!);
         }
-
+    
         return misionesLista;
     }
 }

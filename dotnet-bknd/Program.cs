@@ -6,23 +6,19 @@ using dotnet_bknd.Repositories.Implementation;
 using dotnet_bknd.Models;
 
 var builder = WebApplication.CreateBuilder(args);
-//Servicions inyectados
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<AppPomoTempoContext>( options =>
   options.UseSqlServer(connectionString));
+//inyctar servicios
 builder.Services.AddScoped<IDbServices, DbServices>();
+builder.Services.AddScoped<IMisionService, MisionService>();
 
 var app = builder.Build();
 
 app.MapGet("/",(IDbServices services) =>{
     return services.GetModelContext();
-});
-
-
-app.MapGet("/misiones",(IDbServices services) =>{
-    return services.misionesList();
 });
 
 app.MapGet("/horas",(IDbServices services) =>{
@@ -33,11 +29,20 @@ app.MapGet("/fechas",(IDbServices services) =>{
     return services.FechasList();
 });
 
+//API MISIONES ROUTES
+app.MapGet("/misiones",(IMisionService services) =>{
+    return services.MisionList();
+});
 
-app.MapPost("/misiones/add", (Misiones mision, IDbServices services) =>{
+app.MapGet("/misiones/{id}", Results<Ok<string>, NotFound> (int id, IMisionService services) =>{
+    var misionName = services.GetMisionFromId(id);
+    return misionName is null
+        ? TypedResults.NotFound()
+        : TypedResults.Ok(misionName);
+});
 
+app.MapPost("/misiones/add", (Misiones mision, IMisionService services) =>{
     var response = services.AddMision(mision);
-
     if (response.Success)
     {
         return Results.Created($"/misiones", response.Message);
@@ -46,7 +51,6 @@ app.MapPost("/misiones/add", (Misiones mision, IDbServices services) =>{
     {
         return Results.BadRequest(response.Message);
     }
-
 });
 
 app.Run();
