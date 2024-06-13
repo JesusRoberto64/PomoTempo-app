@@ -34,7 +34,7 @@ app.MapGet("/misiones",(IMisionService services) =>{
     return services.MisionList();
 });
 
-app.MapGet("/misiones/{id}", Results<Ok<string>, NotFound> (int id, IMisionService services) =>{
+app.MapGet("/misiones/{id}", Results<Ok<Misiones>, NotFound> (int id, IMisionService services) =>{
     var misionName = services.GetMisionFromId(id);
     return misionName is null
         ? TypedResults.NotFound()

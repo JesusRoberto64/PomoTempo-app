@@ -57,14 +57,14 @@ public class MisionService : IMisionService
         throw new NotImplementedException();
     }
 
-    public string? GetMisionFromId(int id)
+    public Misiones GetMisionFromId(int id)
     {
         var mision = _context.Misiones.Find(id);
         if (mision == null)
         {
-            return null;
+            return null!;
         }
-        return mision.Nombre;
+        return mision;
     }
 
     public List<string> MisionList()
