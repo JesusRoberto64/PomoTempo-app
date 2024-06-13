@@ -8,7 +8,7 @@ public interface IMisionService
     public Misiones GetMisionFromId(int id);
     public IResponse AddMision(Misiones mision);
     public IResponse DeleteMision(int id);
-    public IResponse EditMision();
+    public IResponse EditMision(int id, string nombre);
 
     //Patch
     //Put

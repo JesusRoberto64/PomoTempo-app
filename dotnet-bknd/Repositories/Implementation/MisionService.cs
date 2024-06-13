@@ -36,7 +36,7 @@ public class MisionService : IMisionService
     {
         try
         {
-            var mision = _context.Misiones.Find(id);
+            var mision = GetMisionFromId(id);
             if (mision == null)
             {
                 return new IResponse { Success = false, Message ="Id incorrecto"};
@@ -52,8 +52,24 @@ public class MisionService : IMisionService
         }
     }
 
-    public IResponse EditMision()
+    public IResponse EditMision(int id, string nombre)
     {
+        try
+        {
+            var curretMision = GetMisionFromId(id);
+            if (curretMision == null)
+            {
+                return new IResponse { Success = false, Message ="Id incorrecto"};
+            }
+            //update 
+            curretMision.Nombre = nombre;
+            _context.SaveChanges();
+            return new IResponse {Success =  true, Message = "Misión Actualizada"};
+        }
+        catch (Exception)
+        {
+            return new IResponse{ Success = false, Message = "ERROR NO SE PUDO ACTUALIZR"};               
+        }
         throw new NotImplementedException();
     }
 

@@ -53,4 +53,16 @@ app.MapPost("/misiones/add", (Misiones mision, IMisionService services) =>{
     }
 });
 
+app.MapDelete("/misiones/{id}", (int id, IMisionService service) =>{
+    var response = service.DeleteMision(id);
+    if (response.Success)
+    {
+        return Results.Created($"/misiones", response.Message);
+    }
+    else
+    {
+        return Results.BadRequest(response.Message);
+    }
+});
+
 app.Run();
