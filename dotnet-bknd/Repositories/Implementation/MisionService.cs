@@ -83,13 +83,13 @@ public class MisionService : IMisionService
         return mision;
     }
 
-    public List<string> MisionList()
+    public List<Misiones> MisionList()
     {
-        List<string> misionesLista = new List<string>();
+        List<Misiones> misionesLista = new List<Misiones>();
         var misiones = _context.Misiones.AsNoTracking();
         foreach(var mision in misiones)
         {
-            misionesLista.Add(mision.Nombre!);
+            misionesLista.Add(mision);
         }
     
         return misionesLista;

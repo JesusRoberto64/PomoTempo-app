@@ -6,10 +6,10 @@ func _ready():
 	$HTTPRequest.request_completed.connect(_on_request_completed)
 	#================
 	
-	#GET REQUEST
-	#var error = $HTTPRequest.request("http://localhost:5074/misiones")
-	#if error != OK:
-		#push_error("An error occurred in the HTTP request.")
+	#GET REQUEST MISION LIST
+	var error = $HTTPRequest.request("http://localhost:5074/misiones")
+	if error != OK:
+		push_error("An error occurred in the HTTP request.")
 	
 	#DELETE REQUEST
 	#var misionId =7
@@ -28,16 +28,16 @@ func _ready():
 	#$HTTPRequest.request("http://localhost:5074/misiones/add",headers,HTTPClient.METHOD_POST, json)
 	
 	#PATCH Mision Name
-	var nombre_Nuevo = "Mision Start Update"
-	var mision_Id = 9
-	var data_To_Send = {
-		"Id": mision_Id,
-		"Nombre" : nombre_Nuevo
-	}
-	var json = JSON.stringify(data_To_Send)
-	var headers = ["Content-Type: application/json"]
-	var url = "http://localhost:5074/misiones/update"
-	$HTTPRequest.request(url, headers, HTTPClient.METHOD_PATCH, json)
+	#var nombre_Nuevo = "Mision Start Update"
+	#var mision_Id = 9
+	#var data_To_Send = {
+		#"Id": mision_Id,
+		#"Nombre" : nombre_Nuevo
+	#}
+	#var json = JSON.stringify(data_To_Send)
+	#var headers = ["Content-Type: application/json"]
+	#var url = "http://localhost:5074/misiones/update"
+	#$HTTPRequest.request(url, headers, HTTPClient.METHOD_PATCH, json)
 	
 
 

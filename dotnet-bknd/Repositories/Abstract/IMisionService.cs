@@ -4,7 +4,7 @@ namespace dotnet_bknd.Repositories.Abstract;
 
 public interface IMisionService
 {
-    public List<String> MisionList();
+    public List<Misiones> MisionList();
     public Misiones GetMisionFromId(int id);
     public IResponse AddMision(Misiones mision);
     public IResponse DeleteMision(int id);
