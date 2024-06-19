@@ -18,16 +18,26 @@ func _ready():
 	#var error = $HTTPRequest.request(url,headers,HTTPClient.METHOD_DELETE)
 	
 	#POST REQUEST NEW MISION
-	var mision = "Mision Start"
-	var dataToSend = {
-		"Nombre" : mision
-		}
-	var json = JSON.stringify(dataToSend)
-	print("Data sended", json)
-	var headers = ["Content-Type: application/json"]
-	$HTTPRequest.request("http://localhost:5074/misiones/add",headers,HTTPClient.METHOD_POST, json)
+	#var mision = "Mision Start"
+	#var dataToSend = {
+		#"Nombre" : mision
+		#}
+	#var json = JSON.stringify(dataToSend)
+	#print("Data sended", json)
+	#var headers = ["Content-Type: application/json"]
+	#$HTTPRequest.request("http://localhost:5074/misiones/add",headers,HTTPClient.METHOD_POST, json)
 	
-	#POST 
+	#PATCH Mision Name
+	var nombre_Nuevo = "Mision Start Update"
+	var mision_Id = 9
+	var data_To_Send = {
+		"Id": mision_Id,
+		"Nombre" : nombre_Nuevo
+	}
+	var json = JSON.stringify(data_To_Send)
+	var headers = ["Content-Type: application/json"]
+	var url = "http://localhost:5074/misiones/update"
+	$HTTPRequest.request(url, headers, HTTPClient.METHOD_PATCH, json)
 	
 
 

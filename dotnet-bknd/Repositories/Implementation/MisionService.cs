@@ -70,7 +70,7 @@ public class MisionService : IMisionService
         {
             return new IResponse{ Success = false, Message = "ERROR NO SE PUDO ACTUALIZR"};               
         }
-        throw new NotImplementedException();
+        
     }
 
     public Misiones GetMisionFromId(int id)

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using dotnet_bknd.Repositories.Abstract;
 using dotnet_bknd.Repositories.Implementation;
 using dotnet_bknd.Models;
+using dotnet_bknd.Models.DTO;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,9 +42,23 @@ app.MapGet("/misiones/{id}", Results<Ok<Misiones>, NotFound> (int id, IMisionSer
         : TypedResults.Ok(misionName);
 });
 
+//add new mision
 app.MapPost("/misiones/add", (Misiones mision, IMisionService services) =>{
     var response = services.AddMision(mision);
     if (response.Success)
+    {
+        return Results.Created($"/misiones", response.Message);
+    }
+    else
+    {
+        return Results.BadRequest(response.Message);
+    }
+});
+
+//edit mision
+app.MapPatch("/misiones/update",(EditNombreRequest request, IMisionService service)=>{
+    var response = service.EditMision(request.Id,request.Nombre!);
+      if (response.Success)
     {
         return Results.Created($"/misiones", response.Message);
     }
