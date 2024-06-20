@@ -38,9 +38,6 @@ func _ready():
 	#var headers = ["Content-Type: application/json"]
 	#var url = "http://localhost:5074/misiones/update"
 	#$HTTPRequest.request(url, headers, HTTPClient.METHOD_PATCH, json)
-	
-
-
 
 func _on_request_completed(result, response_code, headers, body):
 	var body_text = body.get_string_from_utf8()

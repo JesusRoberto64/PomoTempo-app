@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://soowu1mre4ue"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xlqte"]
+bg_color = Color(0.260736, 0.68312, 0.589852, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mp8th"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yha66"]
+bg_color = Color(0.91996, 0.445826, 0.14043, 1)
+
+[node name="ControlTests" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Button"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 64.0
+offset_right = 50.0
+offset_bottom = 87.0
+text = "Hola"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 103.0
+offset_right = 78.0
+offset_bottom = 136.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_xlqte")
+theme_override_styles/focus = SubResource("StyleBoxFlat_mp8th")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_yha66")
+placeholder_text = "Edit
+"
+editable = false
