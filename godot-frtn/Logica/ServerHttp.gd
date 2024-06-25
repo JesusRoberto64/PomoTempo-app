@@ -7,9 +7,9 @@ func _ready():
 	#================
 	
 	#GET REQUEST MISION LIST
-	var error = $HTTPRequest.request("http://localhost:5074/misiones")
-	if error != OK:
-		push_error("An error occurred in the HTTP request.")
+	#var error = $HTTPRequest.request("http://localhost:5074/misiones")
+	#if error != OK:
+		#push_error("An error occurred in the HTTP request.")
 	
 	#DELETE REQUEST
 	#var misionId =7
@@ -55,7 +55,7 @@ func _on_request_completed(result, response_code, headers, body):
 			print("Data String message")
 			print(data_recived)
 		elif data_recived.has("id"):
-			print("Objeto JSON")
+			print("Objeto JSON ", typeof(data_recived))
 			print(data_recived.id, " " ,data_recived.nombre)
 		else:
 			print("Unexpeted Data")

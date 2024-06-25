@@ -10,12 +10,13 @@ signal send_Request(update, variant)
 @export var client: Node
 
 var edited_Text :String= ""
+var id: int
 
 func _ready():
-	if !client.has_method("send_Request"):
-		client = null
-	else:
+	if client != null and client.has_method("send_Request"):
 		send_Request.connect(client.send_Request)
+	else:
+		client = null
 	
 	edited_Text = text_Edit.text
 	option_Button.item_selected.connect(_on_item_selected)
@@ -69,6 +70,7 @@ func _on_save_pressed():
 		save.hide()
 		cancel.hide()
 		option_Button.selected = -1
+		edited_Text = text_Edit.text
 	elif text_Edit.text == "":
 		text_Edit.placeholder_text = "Llena este campo !!"
 		pass
