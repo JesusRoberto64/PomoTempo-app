@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Logica/textDisplay.gd" id="1_pdvca"]
 
-[node name="textDisplay" type="VBoxContainer"]
+[node name="textDisplay" type="VBoxContainer" groups=["textDisplay"]]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 62.0
@@ -24,6 +24,7 @@ editable = false
 scroll_past_end_of_file = true
 
 [node name="OptionButton" type="OptionButton" parent="HBoxContainer"]
+visible = false
 clip_contents = true
 layout_mode = 2
 item_count = 3
@@ -51,3 +52,5 @@ text = "Save"
 visible = false
 layout_mode = 2
 text = "Error: Llena el campo"
+
+[connection signal="mouse_entered" from="HBoxContainer/TextEdit" to="." method="_on_text_edit_mouse_entered"]

@@ -9,35 +9,40 @@ var error = ""
 @onready var colMisiones
 var textDisplay = preload("res://Escenas/text_display.tscn")
 
+var HTTP: HTTPRequest
+
 func _ready():
 	colMisiones = get_node("../ScrollContainer/colMisiones")
-	#GET REQUEST MISION LIST
-	var HTTP = HTTPRequest.new()
+	HTTP = HTTPRequest.new()
 	add_child(HTTP)
 	
 	HTTP.request_completed.connect(_on_request_completed)
+	#Temporal send request
+	#GET REQUEST MISION LIST
 	var err = HTTP.request("http://localhost:5074/misiones")
 	if err != OK:
 		push_error("An error occurred in the HTTP request.")
 
-#This fuction is conncected from a UI or "view" signal, 
-#when player activates a button with a reques.
+#This fuction is conncected from a UI or "view" (text_display.tscn) 
+#signal, when player activates a button with a reques.
 func send_Request(data, _mode, _id):
-	print(data, " from ", _mode, " Id: ", _id)
-	
-	#Request 
 	match _mode:
 		"UPDATE":
 			curMode = MODE.UPDATE
-			#Test 
-			#To fake the delay request from network
-			var tween = get_tree().create_tween()
-			tween.tween_callback(error_Emmit).set_delay(3)
-			pass
-	
-	#To fake the delay request from network
-	#var tween = get_tree().create_tween()
-	#tween.tween_callback(error_Emmit).set_delay(3)
+			#Test
+			var dataToSend = {
+				"Id": _id,
+				"Nombre": data
+			}
+			var json = JSON.stringify(dataToSend)
+			var headers = ["Content-Type: application/json"]
+			var url = "http://localhost:5074/misiones/update"
+			HTTP.request(url, headers, HTTPClient.METHOD_PATCH, json)
+		"DELETE":
+			curMode = MODE.DELETE
+			var url = "http://localhost:5074/misiones/" + str(_id)
+			var headers = []
+			HTTP.request(url,headers,HTTPClient.METHOD_DELETE)
 
 #This fuction emmits a signal to be catch the sever response
 # using the await operator by the client. In this way the UI view
@@ -68,14 +73,18 @@ func mode_Match(_data_recived):
 		MODE.READ:
 			pass
 		MODE.UPDATE:
+			updated_Data(_data_recived)
+			pass
+		MODE.DELETE:
+			updated_Data(_data_recived)
 			pass
 
-func fetch_Bunch_Data(data):
-	if typeof(data) != TYPE_ARRAY:
+func fetch_Bunch_Data(_data):
+	if typeof(_data) != TYPE_ARRAY:
 		format_Error("Its not an Array")
 		return
 	
-	for i in data:
+	for i in _data:
 		var mision = textDisplay.instantiate()
 		mision.id = i.id
 		mision.client = self
@@ -83,8 +92,13 @@ func fetch_Bunch_Data(data):
 		colMisiones.add_child(mision)
 
 func fetch_Data(_data):
-	
 	pass
+
+func updated_Data(_data):
+	if typeof(_data) != TYPE_STRING:
+		format_Error("Its not an STRING")
+		return
+	print("Data updated!")
 
 func format_Error(err):
 	print("Format ERROR: ",err)
