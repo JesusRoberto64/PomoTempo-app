@@ -1,5 +1,8 @@
 extends Node
 
+enum MODE {CREATE, READ_BUNCH, READ, DELETE, UPDATE}
+var curMode = MODE.READ_BUNCH
+
 signal error_Return
 var error = ""
 
@@ -13,44 +16,75 @@ func _ready():
 	add_child(HTTP)
 	
 	HTTP.request_completed.connect(_on_request_completed)
-	var error = HTTP.request("http://localhost:5074/misiones")
-	if error != OK:
+	var err = HTTP.request("http://localhost:5074/misiones")
+	if err != OK:
 		push_error("An error occurred in the HTTP request.")
+
+#This fuction is conncected from a UI or "view" signal, 
+#when player activates a button with a reques.
+func send_Request(data, _mode, _id):
+	print(data, " from ", _mode, " Id: ", _id)
 	
+	#Request 
+	match _mode:
+		"UPDATE":
+			curMode = MODE.UPDATE
+			#Test 
+			#To fake the delay request from network
+			var tween = get_tree().create_tween()
+			tween.tween_callback(error_Emmit).set_delay(3)
+			pass
+	
+	#To fake the delay request from network
+	#var tween = get_tree().create_tween()
+	#tween.tween_callback(error_Emmit).set_delay(3)
 
-func send_Request(data: String, variant):
-	print(data, " from ", variant)
-	var tween = get_tree().create_tween()
-	tween.tween_callback(error_Emmit).set_delay(3)
-	pass
-
+#This fuction emmits a signal to be catch the sever response
+# using the await operator by the client. In this way the UI view
+# can be update.
 func error_Emmit():
-	error = null
 	self.emit_signal("error_Return")
-	print(" in func error")
 
-func _on_request_completed(result, response_code, headers, body):
+func _on_request_completed(_result, response_code, _headers, body):
 	var body_text = body.get_string_from_utf8()
 	var json = JSON.new()
-	var error = json.parse(body_text)
-	print(response_code)
-	if error != OK:
-		print("JSON Parse Error: ", json.get_error_message(), " in ", body_text, " at line ", json.get_error_line())
-	else:
-		var data_recived =  json.data
-		if typeof(data_recived) == TYPE_ARRAY:
-			print("Data recivida Array")
-			print(data_recived)
-			fetch_Data(data_recived)
-		else:
-			print("Unexpeted Data")
-			print(data_recived)
+	var err = json.parse(body_text)
+	#print(response_code)
+	if err != OK:
+		print("JSON Parse Error: ", json.get_error_message(), " in ", body_text, " at line ", json.get_error_line(), "Response code: ", response_code)
+		error = "ERROR: " + json.get_error_message() + " code: " + str(response_code)
+		error_Emmit()
+		return
+	
+	error = null
+	error_Emmit()
+	var data_recived =  json.data
+	mode_Match(data_recived)
 
-func fetch_Data(data):
+func mode_Match(_data_recived):
+	match curMode:
+		MODE.READ_BUNCH:
+			fetch_Bunch_Data(_data_recived)
+		MODE.READ:
+			pass
+		MODE.UPDATE:
+			pass
+
+func fetch_Bunch_Data(data):
+	if typeof(data) != TYPE_ARRAY:
+		format_Error("Its not an Array")
+		return
+	
 	for i in data:
 		var mision = textDisplay.instantiate()
 		mision.id = i.id
 		mision.client = self
 		mision.call_deferred("set_Nombre",i.nombre)
 		colMisiones.add_child(mision)
+
+func fetch_Data(_data):
+	
 	pass
+
+func format_Error(err):
+	print("Format ERROR: ",err)

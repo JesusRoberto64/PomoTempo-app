@@ -6,7 +6,7 @@ extends VBoxContainer
 @onready var save = $HBoxContainer/save
 @onready var error_Lab = $error
 
-signal send_Request(update, variant)
+signal send_Request(update, mode, id)
 @export var client: Node
 
 var edited_Text :String= ""
@@ -57,7 +57,13 @@ func _on_save_pressed():
 			text_Edit.editable = true
 			return
 		
-		send_Request.emit(text_Edit.text, self)
+		if text_Edit.text == edited_Text:
+			enable_Buttons()
+			error_Lab.show()
+			text_Edit.editable = true
+			return
+		
+		send_Request.emit(text_Edit.text, "UPDATE", id)
 		await client.error_Return
 		
 		if client.error != null:
