@@ -27,6 +27,7 @@ func _ready():
 	save.pressed.connect(_on_save_pressed)
 
 func _on_item_selected(index: int): #This was connected on _ready
+	#This fuction manage the UI interacion
 	match index:
 		0:# Edit Text
 			text_Edit.editable = true

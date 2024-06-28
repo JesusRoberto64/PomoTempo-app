@@ -17,11 +17,7 @@ func _ready():
 	add_child(HTTP)
 	
 	HTTP.request_completed.connect(_on_request_completed)
-	#Temporal send request
-	#GET REQUEST MISION LIST
-	var err = HTTP.request("http://localhost:5074/misiones")
-	if err != OK:
-		push_error("An error occurred in the HTTP request.")
+	#send_Request([],"READ_BUNCH", 0)
 
 #This fuction is conncected from a UI or "view" (text_display.tscn) 
 #signal, when player activates a button with a reques.
@@ -43,6 +39,18 @@ func send_Request(data, _mode, _id):
 			var url = "http://localhost:5074/misiones/" + str(_id)
 			var headers = []
 			HTTP.request(url,headers,HTTPClient.METHOD_DELETE)
+		"READ_BUNCH":
+			curMode = MODE.READ_BUNCH
+			HTTP.request("http://localhost:5074/misiones")
+		"ADD":
+			curMode = MODE.CREATE
+			#var dataToSend = {
+				#"Nombre": data
+			#}
+			#var json = JSON.stringify(dataToSend)
+			#var headers = ["Content-Type: application/json"]
+			#HTTP.request("http://localhost:5074/misiones/add",headers,HTTPClient.METHOD_POST, json)
+			pass
 
 #This fuction emmits a signal to be catch the sever response
 # using the await operator by the client. In this way the UI view
@@ -77,6 +85,13 @@ func mode_Match(_data_recived):
 			pass
 		MODE.DELETE:
 			updated_Data(_data_recived)
+			pass
+		MODE.CREATE:
+			print("Added")
+			error = null
+			var tween = get_tree().create_tween()
+			tween.tween_callback(error_Emmit).set_delay(3)
+			
 			pass
 
 func fetch_Bunch_Data(_data):
