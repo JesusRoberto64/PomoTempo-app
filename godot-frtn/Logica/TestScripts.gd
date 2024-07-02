@@ -45,15 +45,14 @@ func send_Request(data, _mode, _id):
 			curMode = MODE.READ_BUNCH
 			HTTP.request("http://localhost:5074/misiones")
 		"ADD":
-			
-			#curMode = MODE.CREATE
-			#recordData = data
-			#var dataToSend = {
-				#"Nombre": data
-			#}
-			#var json = JSON.stringify(dataToSend)
-			#var headers = ["Content-Type: application/json"]
-			#HTTP.request("http://localhost:5074/misiones/add",headers,HTTPClient.METHOD_POST, json)
+			curMode = MODE.CREATE
+			recordData = data
+			var dataToSend = {
+				"Nombre": data
+			}
+			var json = JSON.stringify(dataToSend)
+			var headers = ["Content-Type: application/json"]
+			HTTP.request("http://localhost:5074/misiones/add",headers,HTTPClient.METHOD_POST, json)
 			pass
 
 #This fuction emmits a signal to be catch the sever response
@@ -91,9 +90,7 @@ func mode_Match(_data_recived):
 			updated_Data(_data_recived)
 			pass
 		MODE.CREATE:
-			#var tween = get_tree().create_tween()
-			#tween.tween_callback(error_Emmit).set_delay(3)
-			add_Record()
+			add_Record(_data_recived)
 			pass
 
 func fetch_Bunch_Data(_data):
@@ -120,8 +117,11 @@ func updated_Data(_data):
 func format_Error(err):
 	print("Format ERROR: ",err)
 
-func add_Record():
-	print("Added")
+func add_Record(_data):
 	var newMision = textDisplay.instantiate()
-	
+	newMision.id
+	newMision.id = _data
+	newMision.client = self
+	newMision.call_deferred("set_Nombre",recordData)
+	colMisiones.add_child(newMision)
 	pass

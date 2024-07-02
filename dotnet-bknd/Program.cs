@@ -47,7 +47,7 @@ app.MapPost("/misiones/add", (Misiones mision, IMisionService services) =>{
     var response = services.AddMision(mision);
     if (response.Success)
     {
-        return Results.Created($"/misiones", response.Message);
+        return Results.Created($"/misiones", response.Id);
     }
     else
     {

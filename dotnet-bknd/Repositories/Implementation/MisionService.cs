@@ -1,4 +1,5 @@
-﻿using dotnet_bknd.Models;
+﻿using System.Data;
+using dotnet_bknd.Models;
 using dotnet_bknd.Repositories.Abstract;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,7 +25,11 @@ public class MisionService : IMisionService
         {
             _context.Misiones.Add(mision);
             _context.SaveChanges();
-            return new IResponse { Success = true, Message = "Misión agregada exitosamente"};
+
+            //obtener el Id de la mision
+            int newMisionId = mision.Id;
+
+            return new IResponse { Success = true, Message = "Misión agregada exitosamente", Id = newMisionId};
         }
         catch (Exception)
         {

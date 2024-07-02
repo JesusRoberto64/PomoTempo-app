@@ -25,10 +25,13 @@ func on_Button_Pressed():
 		return
 	if client == null: return
 	button.disabled = true
+	textEdit.editable = false
 	
 	send_Request.emit(textEdit.text,"ADD", 0)
 	await client.error_Return
 	button.disabled = false
+	textEdit.text = ""
+	textEdit.editable = true
 	
 	if client.error != null:
 		#ERROR
