@@ -63,7 +63,7 @@ public class DbServices : IDbServices
         return horasLista; 
     }
 
-    public List<string> misionesList()
+    public List<string> MisionesList()
     {
         List<string> misionesLista = new List<string>();
         var misiones = _context.Misiones.AsNoTracking();

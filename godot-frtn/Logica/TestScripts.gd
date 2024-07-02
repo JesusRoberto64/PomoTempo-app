@@ -19,7 +19,7 @@ func _ready():
 	add_child(HTTP)
 	
 	HTTP.request_completed.connect(_on_request_completed)
-	#send_Request([],"READ_BUNCH", 0)
+	send_Request([],"READ_BUNCH", 0)
 
 #This fuction is conncected from a UI or "view" (text_display.tscn) 
 #signal, when player activates a button with a reques.
