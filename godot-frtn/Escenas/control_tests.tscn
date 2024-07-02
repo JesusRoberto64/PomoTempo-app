@@ -1,0 +1,90 @@
+[gd_scene load_steps=4 format=3 uid="uid://soowu1mre4ue"]
+
+[ext_resource type="Script" path="res://Logica/TestScripts.gd" id="2_q5h25"]
+[ext_resource type="PackedScene" uid="uid://bn8rv86cepfhn" path="res://Escenas/text_display.tscn" id="2_qimvf"]
+[ext_resource type="Script" path="res://Logica/AddMision.gd" id="2_xibll"]
+
+[node name="ControlTests" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TestScripts" type="Node" parent="."]
+script = ExtResource("2_q5h25")
+
+[node name="AddMision" type="HBoxContainer" parent="." node_paths=PackedStringArray("client")]
+layout_mode = 0
+offset_left = 272.0
+offset_top = 8.0
+offset_right = 570.0
+offset_bottom = 46.0
+script = ExtResource("2_xibll")
+client = NodePath("../TestScripts")
+
+[node name="TextEdit" type="TextEdit" parent="AddMision"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Add Mision"
+
+[node name="Button" type="Button" parent="AddMision"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "  +  "
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 2
+offset_left = 191.0
+offset_top = 50.0
+offset_right = 576.0
+offset_bottom = 312.0
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="colMisiones" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="textDisplay" parent="ScrollContainer/colMisiones" instance=ExtResource("2_qimvf")]
+layout_mode = 2
+
+[node name="Table Container" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 23.0
+offset_right = 260.0
+offset_bottom = 923.0
+
+[node name="colFechas" type="VBoxContainer" parent="Table Container"]
+layout_mode = 2
+
+[node name="Heder" type="Label" parent="Table Container/colFechas"]
+layout_mode = 2
+text = "Fechas"
+
+[node name="Label" type="Label" parent="Table Container/colFechas"]
+layout_mode = 2
+text = "20/20/2024"
+
+[node name="colPomodoros" type="VBoxContainer" parent="Table Container"]
+layout_mode = 2
+
+[node name="Heder" type="Label" parent="Table Container/colPomodoros"]
+layout_mode = 2
+text = "Pomodoros"
+
+[node name="Label" type="Label" parent="Table Container/colPomodoros"]
+layout_mode = 2
+text = "000000"
+
+[node name="colMisiones" type="VBoxContainer" parent="Table Container"]
+custom_minimum_size = Vector2(0, 900)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Header" type="Label" parent="Table Container/colMisiones"]
+layout_mode = 2
+text = "Misiones"

@@ -8,7 +8,7 @@ public interface IDbServices
     public List<String> FechasList();
     public List<String> HorasFromPomo();
     public string? GetModelContext();
-    public Response AddMision(Misiones mision);
+    public IResponse AddMision(Misiones mision);
 
 
 

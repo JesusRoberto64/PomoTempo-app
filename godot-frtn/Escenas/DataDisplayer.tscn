@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=3 uid="uid://dic4lk85psrb5"]
+
+[ext_resource type="Script" path="res://Logica/DataDisplayer.gd" id="1_do0ov"]
+
+[node name="DataDisplayer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_do0ov")
+end_Point = "/misiones"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="IDContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Id" type="Label" parent="HBoxContainer/IDContainer"]
+layout_mode = 2
+text = "ID"
+
+[node name="0" type="Label" parent="HBoxContainer/IDContainer"]
+layout_mode = 2
+focus_mode = 2
+text = "0
+"
+
+[node name="MisionContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Mision" type="Label" parent="HBoxContainer/MisionContainer"]
+layout_mode = 2
+text = "MISIÓN"
+
+[node name="Mision2" type="Label" parent="HBoxContainer/MisionContainer"]
+layout_mode = 2
+text = "mision start"
+
+[node name="TextEdit" type="TextEdit" parent="HBoxContainer/MisionContainer"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+size_flags_stretch_ratio = 0.65
+placeholder_text = "Misión"
+editable = false
+scroll_smooth = true
+
+[node name="TextEdit2" type="TextEdit" parent="HBoxContainer/MisionContainer"]
+layout_mode = 2
+text = "Msion"

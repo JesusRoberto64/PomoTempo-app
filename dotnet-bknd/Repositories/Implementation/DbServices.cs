@@ -14,23 +14,23 @@ public class DbServices : IDbServices
         _context = context;
     }
 
-    public Response AddMision(Misiones mision)
+    public IResponse AddMision(Misiones mision)
     {   
         
         if (string.IsNullOrEmpty(mision.Nombre))
         {
-            return new Response { Success = false, Message ="Agrégale un nombre a la misión"};
+            return new IResponse { Success = false, Message ="Agrégale un nombre a la misión"};
         }
 
         try
         {
             _context.Misiones.Add(mision);
             _context.SaveChanges();
-            return new Response { Success = true, Message = "Misión agregada exitosamente"};
+            return new IResponse { Success = true, Message = "Misión agregada exitosamente"};
         }
         catch (Exception)
         {
-            return new Response{ Success = false, Message = "ERROR NO SE PUDO GUARDAR"};
+            return new IResponse{ Success = false, Message = "ERROR NO SE PUDO GUARDAR"};
         }
     }
 

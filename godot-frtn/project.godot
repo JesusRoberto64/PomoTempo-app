@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="Godot-frtn"
-run/main_scene="res://Escnas/ServerHttp.tscn"
+run/main_scene="res://Escenas/DataDisplayer.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=576
+window/size/viewport_height=324
 
 [rendering]
 
