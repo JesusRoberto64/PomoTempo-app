@@ -11,6 +11,8 @@ var textDisplay = preload("res://Escenas/text_display.tscn")
 
 var HTTP: HTTPRequest
 
+var recordData: String
+
 func _ready():
 	colMisiones = get_node("../ScrollContainer/colMisiones")
 	HTTP = HTTPRequest.new()
@@ -43,7 +45,9 @@ func send_Request(data, _mode, _id):
 			curMode = MODE.READ_BUNCH
 			HTTP.request("http://localhost:5074/misiones")
 		"ADD":
-			curMode = MODE.CREATE
+			
+			#curMode = MODE.CREATE
+			#recordData = data
 			#var dataToSend = {
 				#"Nombre": data
 			#}
@@ -87,11 +91,9 @@ func mode_Match(_data_recived):
 			updated_Data(_data_recived)
 			pass
 		MODE.CREATE:
-			print("Added")
-			error = null
-			var tween = get_tree().create_tween()
-			tween.tween_callback(error_Emmit).set_delay(3)
-			
+			#var tween = get_tree().create_tween()
+			#tween.tween_callback(error_Emmit).set_delay(3)
+			add_Record()
 			pass
 
 func fetch_Bunch_Data(_data):
@@ -117,3 +119,9 @@ func updated_Data(_data):
 
 func format_Error(err):
 	print("Format ERROR: ",err)
+
+func add_Record():
+	print("Added")
+	var newMision = textDisplay.instantiate()
+	
+	pass
