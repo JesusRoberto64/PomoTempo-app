@@ -43,7 +43,7 @@ func send_Request(data, _mode, _id):
 			HTTP.request(url,headers,HTTPClient.METHOD_DELETE)
 		"READ_BUNCH":
 			curMode = MODE.READ_BUNCH
-			HTTP.request("http://localhost:5074/misiones")
+			HTTP.request("http://localhost:5074/api/mision")
 		"ADD":
 			curMode = MODE.CREATE
 			recordData = data

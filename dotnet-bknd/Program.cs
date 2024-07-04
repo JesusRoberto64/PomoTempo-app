@@ -16,12 +16,29 @@ builder.Services.AddDbContext<AppPomoTempoContext>( options =>
 builder.Services.AddScoped<IDbServices, DbServices>();
 builder.Services.AddScoped<IMisionService, MisionService>();
 
+//añadir controladore
+builder.Services.AddControllers();
+//builder.Services.AddEndpointsApiExplorer();
+
 var app = builder.Build();
 
+//app.UseRouting();
+
+//app.UseHttpsRedirection();
+
+app.MapControllers();
+
+/*
+app.UseEndpoints(endpoints =>{
+    endpoints.MapControllers();
+});
+*/
+/*
 app.MapGet("/",(IDbServices services) =>{
     return services.GetModelContext();
 });
-
+*/
+/*
 app.MapGet("/horas",(IDbServices services) =>{
     return services.HorasFromPomo();
 });
@@ -79,5 +96,5 @@ app.MapDelete("/misiones/{id}", (int id, IMisionService service) =>{
         return Results.BadRequest(response.Message);
     }
 });
-
+*/
 app.Run();
