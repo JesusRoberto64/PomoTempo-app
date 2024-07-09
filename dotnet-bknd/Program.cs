@@ -18,21 +18,11 @@ builder.Services.AddScoped<IMisionService, MisionService>();
 
 //añadir controladore
 builder.Services.AddControllers();
-//builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
 
-//app.UseRouting();
-
-//app.UseHttpsRedirection();
-
 app.MapControllers();
 
-/*
-app.UseEndpoints(endpoints =>{
-    endpoints.MapControllers();
-});
-*/
 /*
 app.MapGet("/",(IDbServices services) =>{
     return services.GetModelContext();

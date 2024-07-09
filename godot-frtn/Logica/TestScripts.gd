@@ -34,11 +34,11 @@ func send_Request(data, _mode, _id):
 			}
 			var json = JSON.stringify(dataToSend)
 			var headers = ["Content-Type: application/json"]
-			var url = "http://localhost:5074/misiones/update"
+			var url = "http://localhost:5074/api/mision/update"
 			HTTP.request(url, headers, HTTPClient.METHOD_PATCH, json)
 		"DELETE":
 			curMode = MODE.DELETE
-			var url = "http://localhost:5074/misiones/" + str(_id)
+			var url = "http://localhost:5074/api/mision/" + str(_id)
 			var headers = []
 			HTTP.request(url,headers,HTTPClient.METHOD_DELETE)
 		"READ_BUNCH":
@@ -52,7 +52,7 @@ func send_Request(data, _mode, _id):
 			}
 			var json = JSON.stringify(dataToSend)
 			var headers = ["Content-Type: application/json"]
-			HTTP.request("http://localhost:5074/misiones/add",headers,HTTPClient.METHOD_POST, json)
+			HTTP.request("http://localhost:5074/api/mision/add",headers,HTTPClient.METHOD_POST, json)
 			pass
 
 #This fuction emmits a signal to be catch the sever response
@@ -65,7 +65,7 @@ func _on_request_completed(_result, response_code, _headers, body):
 	var body_text = body.get_string_from_utf8()
 	var json = JSON.new()
 	var err = json.parse(body_text)
-	#print(response_code)
+	
 	if err != OK:
 		print("JSON Parse Error: ", json.get_error_message(), " in ", body_text, " at line ", json.get_error_line(), "Response code: ", response_code)
 		error = "ERROR: " + json.get_error_message() + " code: " + str(response_code)
@@ -110,7 +110,7 @@ func fetch_Data(_data):
 
 func updated_Data(_data):
 	if typeof(_data) != TYPE_STRING:
-		format_Error("Its not an STRING")
+		print(_data.message)
 		return
 	print("Data updated!")
 
