@@ -4,6 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace dotnet_bknd.Controllers;
 
+//Remember for requesting enponti is host://Route + ControllerName +(name)
+//IMPORTANT ControllerName = first word of class name Example continue->>
+//->> public class MisionController ->> (Mision)Controller ->> ; (mision) Lowercase
+//and the end point will be : host:/api/mision/{id}
+
 [ApiController]
 [Route("api/[controller]")]
 public class MisionController : ControllerBase

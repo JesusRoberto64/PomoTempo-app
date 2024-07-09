@@ -18,6 +18,7 @@ public class AppPomoTempoContext : DbContext
 
     }
 
+    //Wrap the fields of the Db
     public DbSet<Misiones> Misiones {get; set;}
     public DbSet<Pomodoros> Pomodoros { get; set; }
     public DbSet<Fechas> Fechas { get; set; }
