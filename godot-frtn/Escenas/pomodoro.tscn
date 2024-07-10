@@ -1,0 +1,81 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6gk38tdoocjh"]
+
+[ext_resource type="Texture2D" uid="uid://cxi7egiwtl4ph" path="res://icon.svg" id="1_o3vtt"]
+[ext_resource type="Script" path="res://Logica/pomodoro.gd" id="1_ucvln"]
+
+[node name="Pomodoro" type="Node2D"]
+script = ExtResource("1_ucvln")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="BG" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(104, 60)
+scale = Vector2(1.625, 0.9375)
+texture = ExtResource("1_o3vtt")
+
+[node name="TimerBG" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0.176471)
+offset_left = 80.0
+offset_top = 8.0
+offset_right = 121.0
+offset_bottom = 31.0
+text = "00:00
+"
+
+[node name="TimerLab" type="Label" parent="."]
+offset_left = 77.0
+offset_top = 6.0
+offset_right = 118.0
+offset_bottom = 29.0
+text = "99:99"
+
+[node name="LabBG" type="Sprite2D" parent="."]
+modulate = Color(3.30899e-08, 0.186617, 0.022344, 1)
+position = Vector2(99, 45)
+scale = Vector2(0.921875, 0.21875)
+texture = ExtResource("1_o3vtt")
+
+[node name="LabPomodoro" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(68, 57.5)
+scale = Vector2(0.4375, 0.351563)
+texture = ExtResource("1_o3vtt")
+
+[node name="Label" type="Label" parent="LabPomodoro"]
+offset_left = -49.0
+offset_top = -32.0
+offset_right = 41.0
+text = "POMDORO"
+
+[node name="LabBreak" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(138.5, 57.5)
+scale = Vector2(0.460937, 0.351563)
+texture = ExtResource("1_o3vtt")
+
+[node name="Label" type="Label" parent="LabBreak"]
+offset_left = -30.1177
+offset_top = -32.0
+offset_right = 20.8823
+offset_bottom = -9.0
+text = "BREAK"
+
+[node name="playPause" type="Button" parent="."]
+offset_top = 64.0
+offset_right = 93.0
+offset_bottom = 95.0
+focus_mode = 1
+toggle_mode = true
+text = "Play/Pause"
+
+[node name="skip" type="Button" parent="."]
+offset_left = 96.0
+offset_top = 64.0
+offset_right = 189.0
+offset_bottom = 95.0
+text = "SKIP"
+
+[connection signal="timeout" from="Timer" to="." method="_on_skip_pressed"]
+[connection signal="pressed" from="playPause" to="." method="_on_play_pause_pressed"]
+[connection signal="pressed" from="skip" to="." method="_on_skip_pressed"]
