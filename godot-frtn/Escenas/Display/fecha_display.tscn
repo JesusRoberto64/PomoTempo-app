@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://da540mfpl0xwf"]
+
+[ext_resource type="Script" path="res://Logica/fecha_display.gd" id="1_jsfau"]
+[ext_resource type="Texture2D" uid="uid://cxi7egiwtl4ph" path="res://icon.svg" id="2_cywdf"]
+[ext_resource type="Script" path="res://Logica/DateArithmethics.gd" id="3_066f1"]
+
+[node name="Fecha_Display" type="Node2D"]
+script = ExtResource("1_jsfau")
+
+[node name="pomoSpr" type="Sprite2D" parent="."]
+self_modulate = Color(0.94902, 0.152941, 0.168627, 1)
+position = Vector2(24, 24)
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("2_cywdf")
+
+[node name="pomdoros" type="Label" parent="."]
+offset_left = 56.0
+offset_top = 24.0
+offset_right = 96.0
+offset_bottom = 47.0
+text = "x99"
+
+[node name="calendarText" type="TextureRect" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+offset_left = 144.0
+offset_right = 208.0
+offset_bottom = 64.0
+texture = ExtResource("2_cywdf")
+expand_mode = 1
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="calendarText"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 58.0
+
+[node name="dia" type="Label" parent="calendarText/VBoxContainer"]
+layout_mode = 2
+text = "13"
+
+[node name="mes" type="Label" parent="calendarText/VBoxContainer"]
+layout_mode = 2
+text = "JUN"
+
+[node name="back" type="Button" parent="."]
+offset_left = 120.0
+offset_right = 139.0
+offset_bottom = 31.0
+text = "A"
+
+[node name="forwar" type="Button" parent="."]
+offset_left = 120.0
+offset_top = 32.0
+offset_right = 128.0
+offset_bottom = 40.0
+text = "v"
+
+[node name="DateArithmethics" type="Node" parent="."]
+script = ExtResource("3_066f1")
+
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="forwar" to="." method="_on_forwar_pressed"]

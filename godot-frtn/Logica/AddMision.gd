@@ -8,6 +8,8 @@ enum STATE {SHOW, HIDE, WITHTEXT}
 signal send_Request(update, mode, id)
 @export var client: Node
 
+signal send_Mision(mision: String)
+
 var edited_Text :String= ""
 var id: int
 
@@ -23,7 +25,10 @@ func on_Button_Pressed():
 	if textEdit.text == "":
 		textEdit.placeholder_text = "Add a name!"
 		return
-	if client == null: return
+	if client == null: 
+		send_Mision.emit(textEdit.text)
+		textEdit.text = ""
+		return
 	button.disabled = true
 	textEdit.editable = false
 	
@@ -39,4 +44,6 @@ func on_Button_Pressed():
 	else:
 		#SUCCES
 		print("SUCCES")
-	
+		
+
+

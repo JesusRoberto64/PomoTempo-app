@@ -7,7 +7,7 @@ signal error_Return
 var error = ""
 
 @onready var colMisiones
-var textDisplay = preload("res://Escenas/text_display.tscn")
+var textDisplay = preload("res://Escenas/Display/text_display.tscn")
 
 var HTTP: HTTPRequest
 
@@ -22,7 +22,7 @@ func _ready():
 	send_Request([],"READ_BUNCH", 0)
 
 #This fuction is conncected from a UI or "view" (text_display.tscn) 
-#signal, when player activates a button with a reques.
+#signal, when player activates a button with a request.
 func send_Request(data, _mode, _id):
 	match _mode:
 		"UPDATE":

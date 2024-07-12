@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://soowu1mre4ue"]
 
 [ext_resource type="Script" path="res://Logica/TestScripts.gd" id="2_q5h25"]
-[ext_resource type="PackedScene" uid="uid://bn8rv86cepfhn" path="res://Escenas/text_display.tscn" id="2_qimvf"]
-[ext_resource type="Script" path="res://Logica/AddMision.gd" id="2_xibll"]
+[ext_resource type="PackedScene" uid="uid://bn8rv86cepfhn" path="res://Escenas/Display/text_display.tscn" id="2_qimvf"]
+[ext_resource type="PackedScene" uid="uid://bwjitqx3ash3u" path="res://Escenas/Display/add_mision.tscn" id="2_y2w8i"]
 
 [node name="ControlTests" type="Control"]
 layout_mode = 3
@@ -15,24 +15,10 @@ grow_vertical = 2
 [node name="TestScripts" type="Node" parent="."]
 script = ExtResource("2_q5h25")
 
-[node name="AddMision" type="HBoxContainer" parent="." node_paths=PackedStringArray("client")]
+[node name="AddMision" parent="." instance=ExtResource("2_y2w8i")]
 layout_mode = 0
-offset_left = 272.0
-offset_top = 8.0
-offset_right = 570.0
-offset_bottom = 46.0
-script = ExtResource("2_xibll")
-client = NodePath("../TestScripts")
-
-[node name="TextEdit" type="TextEdit" parent="AddMision"]
-layout_mode = 2
-size_flags_horizontal = 3
-placeholder_text = "Add Mision"
-
-[node name="Button" type="Button" parent="AddMision"]
-layout_mode = 2
-size_flags_horizontal = 8
-text = "  +  "
+offset_left = 280.0
+offset_right = 578.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 2

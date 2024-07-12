@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://qhkh5cl0ia86"]
+
+[ext_resource type="Script" path="res://Logica/main_screen.gd" id="1_45agk"]
+[ext_resource type="PackedScene" uid="uid://c6gk38tdoocjh" path="res://Escenas/Display/pomodoro.tscn" id="1_wi186"]
+[ext_resource type="PackedScene" uid="uid://da540mfpl0xwf" path="res://Escenas/Display/fecha_display.tscn" id="2_hmeib"]
+[ext_resource type="PackedScene" uid="uid://dvwd1g1p04v7" path="res://Escenas/Display/alarm.tscn" id="2_jbx1w"]
+[ext_resource type="PackedScene" uid="uid://djavrnimm0hwa" path="res://Escenas/Display/mision_mini_panel.tscn" id="4_on8gy"]
+[ext_resource type="PackedScene" uid="uid://bwjitqx3ash3u" path="res://Escenas/Display/add_mision.tscn" id="5_er0ne"]
+[ext_resource type="Script" path="res://Logica/dummie_response.gd" id="6_p75cs"]
+
+[node name="MainScreen" type="Node2D"]
+script = ExtResource("1_45agk")
+
+[node name="Fecha_Display" parent="." instance=ExtResource("2_hmeib")]
+position = Vector2(352, 0)
+
+[node name="Pomodoro" parent="." instance=ExtResource("1_wi186")]
+position = Vector2(64, 8)
+
+[node name="Alarm" parent="." instance=ExtResource("2_jbx1w")]
+position = Vector2(56, 136)
+
+[node name="MisionMiniPanel" parent="." instance=ExtResource("4_on8gy")]
+position = Vector2(352, 72)
+
+[node name="AddMision" parent="." instance=ExtResource("5_er0ne")]
+offset_left = 280.0
+offset_top = 280.0
+offset_right = 578.0
+offset_bottom = 318.0
+
+[node name="DummieResponse" type="Node2D" parent="."]
+position = Vector2(232, 247)
+script = ExtResource("6_p75cs")
+mision_array = ["new 1", "new 2", "new 3"]
+pomo_arry = [10, 3, 56]
+metadata/_edit_group_ = true
+
+[node name="ButtonFetched" type="Button" parent="DummieResponse"]
+offset_right = 153.0
+offset_bottom = 31.0
+text = "Send Fetched Data"
+
+[connection signal="send_Fetched" from="DummieResponse" to="MisionMiniPanel" method="fetch_Misions"]
+[connection signal="pressed" from="DummieResponse/ButtonFetched" to="DummieResponse" method="_on_button_pressed"]

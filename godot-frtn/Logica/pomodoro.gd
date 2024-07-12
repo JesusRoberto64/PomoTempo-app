@@ -19,6 +19,8 @@ var curPomoState = POMOSTATE.POMODORO
 @onready var skipBtn: Button = $skip
 
 signal timeout(mode)
+signal break_alarm
+signal pomodoro_alarm
 
 func _ready():
 	timer.wait_time = Pomodoro
@@ -61,19 +63,19 @@ func _on_play_pause_pressed():
 
 func _on_skip_pressed():
 	if curPomoState == POMOSTATE.POMODORO:
+		if !timer.is_paused(): emit_signal("pomodoro_alarm")
 		curPomoState = POMOSTATE.BREAK
 		labPomodoro.hide()
 		labBreak.show()
 		timer.wait_time = Break
 		holdTime = Break
-		emit_signal("timeout","Pomodoro")
 	else:
+		if !timer.is_paused(): emit_signal("break_alarm")
 		curPomoState = POMOSTATE.POMODORO
 		labPomodoro.show()
 		labBreak.hide()
 		timer.wait_time = Pomodoro
 		holdTime = Pomodoro
-		emit_signal("timeout","Break")
 	
 	playPauseBtn.toggle_mode = false
 	playPauseBtn.release_focus()
