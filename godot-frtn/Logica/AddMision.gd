@@ -2,7 +2,7 @@ extends HBoxContainer
 
 enum STATE {SHOW, HIDE, WITHTEXT}
 
-@onready var textEdit = $TextEdit
+@onready var textEdit: TextEdit = $TextEdit
 @onready var button = $Button
 
 signal send_Request(update, mode, id)
@@ -44,6 +44,9 @@ func on_Button_Pressed():
 	else:
 		#SUCCES
 		print("SUCCES")
-		
 
+func disble_Add():
+	textEdit.set_editable(false)
 
+func enable_Add():
+	textEdit.set_editable(false)

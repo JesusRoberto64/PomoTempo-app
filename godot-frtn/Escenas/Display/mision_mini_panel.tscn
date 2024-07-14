@@ -313,7 +313,7 @@ offset_bottom = 31.0
 [node name="numberLab" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 31.0
-text = "x99"
+text = "x0"
 
 [node name="cheat" type="Button" parent="."]
 visible = false

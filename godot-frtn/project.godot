@@ -15,6 +15,13 @@ run/main_scene="res://Escenas/Screens/main_screen.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Fechas01="*res://Logica/DataBaseModels/Fechas.gd"
+Misiones="*res://Logica/DataBaseModels/Misiones.gd"
+MisionesRegister="*res://Logica/DataBaseModels/RegistroMision.gd"
+FechasMisionRegistro="*res://Logica/DataBaseModels/fechas_mision_registro.gd"
+
 [display]
 
 window/size/viewport_width=576

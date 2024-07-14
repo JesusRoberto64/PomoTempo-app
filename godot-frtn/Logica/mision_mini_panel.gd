@@ -16,12 +16,8 @@ extends Node2D
 var curPanel = 0
 var curMision = 0
 
-func _ready():
-	titleLabel.text = misiones[curPanel]
-	set_Selected_Mision()
-	get_Pomodoros_Mision(pomoArr[curPanel])
-
 func _on_back_pressed():
+	if misiones.size() == 0: return
 	var nextIndx = curPanel - 1
 	#Basic logic to dont let module % return a negative number
 	curPanel = (nextIndx % misiones.size() + misiones.size()) % misiones.size()
@@ -30,6 +26,7 @@ func _on_back_pressed():
 	get_Pomodoros_Mision(pomoArr[curPanel])
 
 func _on_forward_pressed():
+	if misiones.size() == 0: return
 	var nextIndx = curPanel + 1
 	titleLabel.text = misiones[nextIndx % misiones.size()]
 	curPanel = nextIndx % misiones.size()
@@ -65,7 +62,6 @@ func get_Pomodoros_Mision(_pomodoros):
 	for i in range(_pomodoros):
 		pomoPanel.get_child(i).show()
 
-#
 func fetch_Misions(_misiones, _pomodoros):
 	if _misiones.size() == 0:
 		print("Error empty array")
@@ -84,7 +80,6 @@ func fetch_Misions(_misiones, _pomodoros):
 	set_Selected_Mision()
 	get_Pomodoros_Mision(pomoArr[curPanel])
 
-
 func add_Mision(_new):
 	if typeof(_new) == TYPE_STRING:
 		misiones.append(_new)
@@ -100,6 +95,7 @@ func add_Mision(_new):
 	get_Pomodoros_Mision(pomoArr[curPanel])
 
 func add_Pomodoro():
+	if misiones.size() == 0: return
 	pomoArr[curMision] += 1
 	
 	curPanel = curMision
@@ -108,3 +104,8 @@ func add_Pomodoro():
 	get_Pomodoros_Mision(pomoArr[curPanel])
 	set_Selected_Mision()
 
+func reset_Panel():
+	for i in pomoPanel.get_children():
+		i.hide()
+	numberLab.text = "x0" 
+	

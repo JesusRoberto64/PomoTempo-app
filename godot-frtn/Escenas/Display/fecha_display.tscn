@@ -18,7 +18,7 @@ offset_left = 56.0
 offset_top = 24.0
 offset_right = 96.0
 offset_bottom = 47.0
-text = "x99"
+text = "x0"
 
 [node name="calendarText" type="TextureRect" parent="."]
 self_modulate = Color(0, 0, 0, 1)

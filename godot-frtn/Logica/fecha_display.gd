@@ -15,7 +15,9 @@ var currentDay
 
 @onready var DateArith = $DateArithmethics 
 
-signal send_Date_Req
+signal send_Date_Req(_date)
+signal is_Today(_bool)
+
 
 func _ready():
 	var t = Time.get_date_dict_from_system()
@@ -25,10 +27,12 @@ func _ready():
 	#Format Date is "YEAR-Month-Day" in integers Ex. 2024-01-01
 	#parse_date is use to convert Time dictionary same as the Database format
 	#format_date is use to draw in the UI as calendar returning strings
-	process_Date(today)
+	#process_Date(today)
+	call_deferred("process_Date", today)
 
 func process_Date(_curDate):
 	var formated_Date = format_Date(_curDate)
+	send_Date_Req.emit(formated_Date)
 	parse_Date(formated_Date)
 
 #Get today date & Change format date
@@ -43,7 +47,6 @@ func parse_Date(_date:String):
 	# the first parameter character, in this case "-", but normally is use "/"
 	var month = _date.get_slice("-",1)
 	var day = _date.get_slice("-",2)
-	
 	#convert the integer from month in string from the mesDict
 	monthLab.text = monDict[int(month)]
 	dayLab.text = day
@@ -53,16 +56,23 @@ func _on_back_pressed():#Days Before
 	# To enable forward button
 	if currentDay == today: 
 		forwardBtn.disabled = false
+	set_Pomodoro(0)
 	currentDay = DateArith.add_days(currentDay, -1)
 	process_Date(currentDay)
+	print("is NOT today")
+	is_Today.emit(false)
 
 func _on_forwar_pressed():#Days After 
+	set_Pomodoro(0)
+	currentDay = DateArith.add_days(currentDay, 1)
+	process_Date(currentDay)
 	#To dont display days after today.
 	if currentDay == today: 
 		forwardBtn.disabled = true
-		return
-	currentDay = DateArith.add_days(currentDay, 1)
-	process_Date(currentDay)
+		is_Today.emit(true)
+	else:
+		is_Today.emit(false)
+
 
 func set_Pomodoro(_pomodoro: int):
 	pomodoro = _pomodoro

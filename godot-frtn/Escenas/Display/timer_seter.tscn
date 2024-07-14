@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwsvr1rujp3an"]
+
+[ext_resource type="Script" path="res://Logica/timer_seter.gd" id="1_k1vjs"]
+
+[node name="Timer_Seter" type="Node2D"]
+script = ExtResource("1_k1vjs")
+
+[node name="seterLab" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Timer Seter"
+
+[node name="points" type="Label" parent="."]
+offset_left = 32.0
+offset_top = 41.0
+offset_right = 40.0
+offset_bottom = 64.0
+text = ":"
+
+[node name="Up" type="Button" parent="."]
+offset_left = 72.0
+offset_top = 24.0
+offset_right = 91.0
+offset_bottom = 55.0
+text = "A"
+
+[node name="Down" type="Button" parent="."]
+offset_left = 72.0
+offset_top = 56.0
+offset_right = 91.0
+offset_bottom = 87.0
+text = "V"
+
+[node name="MinuteBtn" type="Button" parent="."]
+offset_top = 40.0
+offset_right = 27.0
+offset_bottom = 71.0
+toggle_mode = true
+button_pressed = true
+text = "00"
+
+[node name="SecdsBtsn" type="Button" parent="."]
+offset_left = 40.0
+offset_top = 41.0
+offset_right = 67.0
+offset_bottom = 74.0
+toggle_mode = true
+text = "00
+"
+
+[connection signal="pressed" from="Up" to="." method="_on_up_pressed"]
+[connection signal="pressed" from="Down" to="." method="_on_down_pressed"]
+[connection signal="toggled" from="MinuteBtn" to="." method="_on_minute_btn_toggled"]
+[connection signal="toggled" from="SecdsBtsn" to="." method="_on_secds_btsn_toggled"]

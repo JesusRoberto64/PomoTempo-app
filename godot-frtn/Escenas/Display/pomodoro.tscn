@@ -76,6 +76,6 @@ offset_right = 189.0
 offset_bottom = 95.0
 text = "SKIP"
 
-[connection signal="timeout" from="Timer" to="." method="_on_skip_pressed"]
+[connection signal="timeout" from="Timer" to="." method="alarm_Timeout"]
 [connection signal="pressed" from="playPause" to="." method="_on_play_pause_pressed"]
 [connection signal="pressed" from="skip" to="." method="_on_skip_pressed"]

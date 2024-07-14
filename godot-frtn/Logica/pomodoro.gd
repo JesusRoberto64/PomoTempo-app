@@ -61,16 +61,14 @@ func _on_play_pause_pressed():
 		curState = STATE.PAUSE
 	playPauseBtn.release_focus()
 
-func _on_skip_pressed():
+func change_Pomodoro_State():
 	if curPomoState == POMOSTATE.POMODORO:
-		if !timer.is_paused(): emit_signal("pomodoro_alarm")
 		curPomoState = POMOSTATE.BREAK
 		labPomodoro.hide()
 		labBreak.show()
 		timer.wait_time = Break
 		holdTime = Break
 	else:
-		if !timer.is_paused(): emit_signal("break_alarm")
 		curPomoState = POMOSTATE.POMODORO
 		labPomodoro.show()
 		labBreak.hide()
@@ -82,4 +80,26 @@ func _on_skip_pressed():
 	skipBtn.release_focus()
 	timer.stop()
 	curState = STATE.SKIP
+
+func _on_skip_pressed():
+	change_Pomodoro_State()
+
+func alarm_Timeout():
+	if curPomoState == POMOSTATE.POMODORO:
+		pomodoro_alarm.emit()
+	else:
+		break_alarm.emit()
+	change_Pomodoro_State()
+
+func set_Pomodoro_Timer(_time):
+	Pomodoro = _time
+	timer.wait_time = Pomodoro
+	if curPomoState == POMOSTATE.POMODORO:
+		holdTime = Pomodoro
+
+func set_Break_Timer(_time):
+	Break = _time
+	timer.wait_time = Break
+	if curPomoState == POMOSTATE.BREAK:
+		holdTime = Break
 
