@@ -1,61 +1,92 @@
-[gd_scene load_steps=4 format=3 uid="uid://da540mfpl0xwf"]
+[gd_scene load_steps=11 format=3 uid="uid://da540mfpl0xwf"]
 
 [ext_resource type="Script" path="res://Logica/fecha_display.gd" id="1_jsfau"]
-[ext_resource type="Texture2D" uid="uid://cxi7egiwtl4ph" path="res://icon.svg" id="2_cywdf"]
+[ext_resource type="Texture2D" uid="uid://denpcklsnq074" path="res://Recursos/Sprites/pomodoro.png" id="2_kjjf7"]
 [ext_resource type="Script" path="res://Logica/DateArithmethics.gd" id="3_066f1"]
+[ext_resource type="FontFile" uid="uid://br40grkrm3qqp" path="res://Recursos/Fonts/Montserrat-BoldItalic.ttf" id="3_k6by3"]
+[ext_resource type="Texture2D" uid="uid://bqqnp6naajdf7" path="res://Recursos/Sprites/calendario.png" id="3_ppxk8"]
+[ext_resource type="Texture2D" uid="uid://dfw536u284wcx" path="res://Recursos/Sprites/triangulo.png" id="4_rndpy"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tpr1p"]
+texture = ExtResource("4_rndpy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h3bpi"]
+texture = ExtResource("4_rndpy")
+modulate_color = Color(1, 1, 1, 0.196078)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7lxmf"]
+texture = ExtResource("4_rndpy")
+modulate_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0ms81"]
+texture = ExtResource("4_rndpy")
+modulate_color = Color(1, 1, 1, 0.388235)
 
 [node name="Fecha_Display" type="Node2D"]
 script = ExtResource("1_jsfau")
+metadata/_edit_vertical_guides_ = [266.0]
+metadata/_edit_horizontal_guides_ = [84.0]
 
 [node name="pomoSpr" type="Sprite2D" parent="."]
-self_modulate = Color(0.94902, 0.152941, 0.168627, 1)
-position = Vector2(24, 24)
-scale = Vector2(0.375, 0.375)
-texture = ExtResource("2_cywdf")
+position = Vector2(0, 16)
+texture = ExtResource("2_kjjf7")
+centered = false
 
 [node name="pomdoros" type="Label" parent="."]
-offset_left = 56.0
-offset_top = 24.0
-offset_right = 96.0
-offset_bottom = 47.0
+offset_left = 85.0
+offset_top = 63.0
+offset_right = 125.0
+offset_bottom = 89.0
+theme_override_fonts/font = ExtResource("3_k6by3")
+theme_override_font_sizes/font_size = 20
 text = "x0"
 
-[node name="calendarText" type="TextureRect" parent="."]
-self_modulate = Color(0, 0, 0, 1)
-offset_left = 144.0
-offset_right = 208.0
-offset_bottom = 64.0
-texture = ExtResource("2_cywdf")
-expand_mode = 1
-metadata/_edit_group_ = true
+[node name="calendarText" type="Sprite2D" parent="."]
+position = Vector2(224, 0)
+texture = ExtResource("3_ppxk8")
+centered = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="calendarText"]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 8.0
-offset_right = 56.0
-offset_bottom = 58.0
-
-[node name="dia" type="Label" parent="calendarText/VBoxContainer"]
-layout_mode = 2
+[node name="dia" type="Label" parent="calendarText"]
+offset_left = 29.0
+offset_top = 20.0
+offset_right = 49.0
+offset_bottom = 46.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_k6by3")
+theme_override_font_sizes/font_size = 20
 text = "13"
 
-[node name="mes" type="Label" parent="calendarText/VBoxContainer"]
-layout_mode = 2
+[node name="mes" type="Label" parent="calendarText"]
+offset_left = 22.0
+offset_top = 50.0
+offset_right = 62.0
+offset_bottom = 73.0
+theme_override_colors/font_color = Color(0.310617, 0.310617, 0.310617, 1)
+theme_override_fonts/font = ExtResource("3_k6by3")
+theme_override_font_sizes/font_size = 18
 text = "JUN"
 
 [node name="back" type="Button" parent="."]
-offset_left = 120.0
-offset_right = 139.0
-offset_bottom = 31.0
-text = "A"
+offset_left = 200.0
+offset_top = 16.0
+offset_right = 216.0
+offset_bottom = 34.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_tpr1p")
+theme_override_styles/hover = SubResource("StyleBoxTexture_h3bpi")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7lxmf")
+theme_override_styles/focus = SubResource("StyleBoxTexture_0ms81")
 
 [node name="forwar" type="Button" parent="."]
-offset_left = 120.0
-offset_top = 32.0
-offset_right = 128.0
-offset_bottom = 40.0
-text = "v"
+offset_left = 216.0
+offset_top = 67.0
+offset_right = 232.0
+offset_bottom = 85.0
+rotation = 3.14159
+theme_override_styles/normal = SubResource("StyleBoxTexture_tpr1p")
+theme_override_styles/hover = SubResource("StyleBoxTexture_h3bpi")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7lxmf")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_0ms81")
+theme_override_styles/focus = SubResource("StyleBoxTexture_0ms81")
 
 [node name="DateArithmethics" type="Node" parent="."]
 script = ExtResource("3_066f1")

@@ -50,7 +50,9 @@ offset_bottom = 23.0
 offset_top = 72.0
 offset_right = 210.0
 offset_bottom = 224.0
+scale = Vector2(0.999771, 0.999771)
 theme_override_styles/panel = SubResource("StyleBoxFlat_5dme6")
+metadata/_edit_group_ = true
 
 [node name="TextureRect" type="TextureRect" parent="PomoPanel"]
 visible = false

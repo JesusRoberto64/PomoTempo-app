@@ -1,52 +1,150 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwsvr1rujp3an"]
+[gd_scene load_steps=18 format=3 uid="uid://bwsvr1rujp3an"]
 
 [ext_resource type="Script" path="res://Logica/timer_seter.gd" id="1_k1vjs"]
+[ext_resource type="FontFile" uid="uid://dmrocwdx2mbpf" path="res://Recursos/Sprites/LCD_NUMBERS.png" id="2_1bg8q"]
+[ext_resource type="Texture2D" uid="uid://dnwipqo56bcwf" path="res://Recursos/Sprites/plus_mini.png" id="2_sndg0"]
+[ext_resource type="FontFile" uid="uid://br40grkrm3qqp" path="res://Recursos/Fonts/Montserrat-BoldItalic.ttf" id="2_w1q8t"]
+[ext_resource type="Texture2D" uid="uid://decun0wiqo2w2" path="res://Recursos/Sprites/minus_mini.png" id="3_b85av"]
+[ext_resource type="Texture2D" uid="uid://cureuljc020cb" path="res://Recursos/Sprites/line_texture.png" id="5_1ejl8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6hqo7"]
+bg_color = Color(0.0823529, 0.0745098, 0.0509804, 1)
+corner_radius_top_left = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yafhx"]
+corner_radius_top_right = 10
+expand_margin_left = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w2k7v"]
+bg_color = Color(0.817521, 0.817521, 0.817521, 1)
+corner_radius_top_right = 10
+expand_margin_left = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_232l4"]
+bg_color = Color(0.489623, 0.489622, 0.489622, 1)
+corner_radius_top_right = 10
+expand_margin_left = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mji6y"]
+border_width_top = 2
+border_width_right = 2
+border_color = Color(0.947199, 0.947199, 0.947199, 1)
+corner_radius_top_right = 10
+expand_margin_left = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ur8xg"]
+corner_radius_bottom_right = 10
+expand_margin_left = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dn77t"]
+bg_color = Color(0.815686, 0.815686, 0.815686, 1)
+corner_radius_bottom_right = 10
+expand_margin_left = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1rl6"]
+bg_color = Color(0.490196, 0.490196, 0.490196, 1)
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_bottom_right = 10
+expand_margin_left = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_soa57"]
+bg_color = Color(0.266667, 0.247059, 0.196078, 0.74902)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1d3mc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1n1xj"]
 
 [node name="Timer_Seter" type="Node2D"]
 script = ExtResource("1_k1vjs")
 
 [node name="seterLab" type="Label" parent="."]
-offset_right = 40.0
+offset_right = 90.0
 offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_w1q8t")
 text = "Timer Seter"
 
+[node name="Panel" type="Panel" parent="."]
+offset_top = 30.0
+offset_right = 88.0
+offset_bottom = 81.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6hqo7")
+
 [node name="points" type="Label" parent="."]
-offset_left = 32.0
-offset_top = 41.0
-offset_right = 40.0
-offset_bottom = 64.0
+offset_left = 40.0
+offset_top = 51.0
+offset_right = 48.0
+offset_bottom = 62.0
+theme_override_fonts/font = ExtResource("2_1bg8q")
+theme_override_font_sizes/font_size = 11
 text = ":"
 
 [node name="Up" type="Button" parent="."]
-offset_left = 72.0
-offset_top = 24.0
-offset_right = 91.0
+offset_left = 88.0
+offset_top = 30.0
+offset_right = 107.0
 offset_bottom = 55.0
-text = "A"
+theme_override_styles/normal = SubResource("StyleBoxFlat_yafhx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w2k7v")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_232l4")
+theme_override_styles/focus = SubResource("StyleBoxFlat_mji6y")
+
+[node name="plus" type="Sprite2D" parent="."]
+position = Vector2(96, 43)
+texture = ExtResource("2_sndg0")
 
 [node name="Down" type="Button" parent="."]
-offset_left = 72.0
-offset_top = 56.0
-offset_right = 91.0
-offset_bottom = 87.0
-text = "V"
+offset_left = 88.0
+offset_top = 55.0
+offset_right = 107.0
+offset_bottom = 81.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ur8xg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dn77t")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_j1rl6")
+theme_override_styles/focus = SubResource("StyleBoxFlat_j1rl6")
+
+[node name="minus" type="Sprite2D" parent="."]
+position = Vector2(96, 67)
+scale = Vector2(0.468751, 0.468751)
+texture = ExtResource("3_b85av")
 
 [node name="MinuteBtn" type="Button" parent="."]
-offset_top = 40.0
-offset_right = 27.0
+offset_left = 6.0
+offset_top = 43.0
+offset_right = 39.0
 offset_bottom = 71.0
+theme_override_fonts/font = ExtResource("2_1bg8q")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/pressed = SubResource("StyleBoxFlat_soa57")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1d3mc")
 toggle_mode = true
 button_pressed = true
 text = "00"
 
 [node name="SecdsBtsn" type="Button" parent="."]
-offset_left = 40.0
-offset_top = 41.0
-offset_right = 67.0
-offset_bottom = 74.0
+offset_left = 48.0
+offset_top = 43.0
+offset_right = 81.0
+offset_bottom = 71.0
+theme_override_fonts/font = ExtResource("2_1bg8q")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/pressed = SubResource("StyleBoxFlat_soa57")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1n1xj")
 toggle_mode = true
 text = "00
 "
+
+[node name="dots" type="Sprite2D" parent="."]
+position = Vector2(86, 54)
+texture = ExtResource("5_1ejl8")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 21.2433, 3)
 
 [connection signal="pressed" from="Up" to="." method="_on_up_pressed"]
 [connection signal="pressed" from="Down" to="." method="_on_down_pressed"]

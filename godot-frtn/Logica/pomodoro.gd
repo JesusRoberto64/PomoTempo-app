@@ -22,6 +22,9 @@ signal timeout(mode)
 signal break_alarm
 signal pomodoro_alarm
 
+@onready var clackSnd = $clack
+@onready var clack2Snd = $clack2
+
 func _ready():
 	timer.wait_time = Pomodoro
 	holdTime = Pomodoro
@@ -52,6 +55,7 @@ func set_Pomodoro_State():
 		labBreak.show()
 
 func _on_play_pause_pressed():
+	clackSnd.play()
 	if curState == STATE.PAUSE or curState == STATE.HOLD:
 		timer.start(timer.time_left)
 		timer.set_paused(false)
@@ -62,6 +66,7 @@ func _on_play_pause_pressed():
 	playPauseBtn.release_focus()
 
 func change_Pomodoro_State():
+	clack2Snd.play()
 	if curPomoState == POMOSTATE.POMODORO:
 		curPomoState = POMOSTATE.BREAK
 		labPomodoro.hide()

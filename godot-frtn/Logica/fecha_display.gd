@@ -1,8 +1,8 @@
 extends Node2D
 
 @onready var pomodorosLab = $pomdoros
-@onready var dayLab = $calendarText/VBoxContainer/dia
-@onready var monthLab = $calendarText/VBoxContainer/mes
+@onready var dayLab = $calendarText/dia
+@onready var monthLab = $calendarText/mes
 
 @onready var backBtn = $back
 @onready var forwardBtn = $forwar
@@ -59,7 +59,7 @@ func _on_back_pressed():#Days Before
 	set_Pomodoro(0)
 	currentDay = DateArith.add_days(currentDay, -1)
 	process_Date(currentDay)
-	print("is NOT today")
+	#print("is NOT today")
 	is_Today.emit(false)
 
 func _on_forwar_pressed():#Days After 
@@ -81,3 +81,4 @@ func set_Pomodoro(_pomodoro: int):
 func add_Pomodoro():
 	pomodoro += 1
 	pomodorosLab.text = "x" + str(pomodoro)
+	

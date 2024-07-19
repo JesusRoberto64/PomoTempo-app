@@ -1,9 +1,36 @@
-[gd_scene load_steps=9 format=3 uid="uid://dvwd1g1p04v7"]
+[gd_scene load_steps=18 format=3 uid="uid://dvwd1g1p04v7"]
 
 [ext_resource type="Script" path="res://Logica/alarm.gd" id="1_qjpui"]
-[ext_resource type="Texture2D" uid="uid://cxi7egiwtl4ph" path="res://icon.svg" id="1_tji8i"]
+[ext_resource type="Texture2D" uid="uid://syjpmomr8jin" path="res://Recursos/Sprites/ALARM_BG_00.png" id="2_8an2n"]
 [ext_resource type="AudioStream" uid="uid://c4mlcvy4ulyxs" path="res://Recursos/Sound/4_MMM.wav" id="2_bwrls"]
+[ext_resource type="Texture2D" uid="uid://b7oa06hgxyn5m" path="res://Recursos/Sprites/plus.png" id="3_5mfua"]
+[ext_resource type="Texture2D" uid="uid://dmqb4jcpk1q07" path="res://Recursos/Sprites/bell.png" id="3_5vswo"]
+[ext_resource type="Texture2D" uid="uid://bkbqbsugm5o42" path="res://Recursos/Sprites/minus.png" id="3_ljhil"]
 [ext_resource type="AudioStream" uid="uid://cnoxun8vpt3su" path="res://Recursos/Sound/1_sfxr.wav" id="4_vyayn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1ydu6"]
+texture = ExtResource("3_5mfua")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l4el2"]
+content_margin_bottom = 21.0
+texture = ExtResource("3_5mfua")
+expand_margin_top = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rpr6b"]
+texture = ExtResource("3_5mfua")
+modulate_color = Color(0.243137, 0.243137, 0.243137, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1hh0s"]
+texture = ExtResource("3_ljhil")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8dtjq"]
+content_margin_bottom = 21.0
+texture = ExtResource("3_ljhil")
+expand_margin_top = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tge7i"]
+texture = ExtResource("3_ljhil")
+modulate_color = Color(0.243137, 0.243137, 0.243137, 1)
 
 [sub_resource type="Animation" id="Animation_w256x"]
 length = 0.001
@@ -119,33 +146,37 @@ _data = {
 }
 
 [node name="Alarm" type="Node2D"]
+scale = Vector2(0.771628, 0.771628)
 script = ExtResource("1_qjpui")
 
 [node name="BG" type="Sprite2D" parent="."]
-self_modulate = Color(0.461922, 0.6244, 0.671261, 1)
-position = Vector2(84, 84)
 scale = Vector2(1.3125, 1.3125)
-texture = ExtResource("1_tji8i")
+texture = ExtResource("2_8an2n")
+centered = false
 
 [node name="Plus" type="Button" parent="."]
-offset_top = 128.0
-offset_right = 80.0
-offset_bottom = 159.0
-text = "+"
+offset_left = 48.0
+offset_top = 280.0
+offset_right = 128.0
+offset_bottom = 311.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_1ydu6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_l4el2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_rpr6b")
 
 [node name="Minus" type="Button" parent="."]
-offset_left = 88.0
-offset_top = 128.0
-offset_right = 168.0
-offset_bottom = 160.0
-text = "-"
+offset_left = 152.0
+offset_top = 280.0
+offset_right = 232.0
+offset_bottom = 312.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_1hh0s")
+theme_override_styles/hover = SubResource("StyleBoxTexture_8dtjq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_tge7i")
 
 [node name="Bell" type="Sprite2D" parent="."]
 visible = false
-self_modulate = Color(0, 0, 0, 1)
-position = Vector2(80, 72)
-scale = Vector2(0.375, 0.4375)
-texture = ExtResource("1_tji8i")
+position = Vector2(216, 160)
+scale = Vector2(1.42754, 1.42754)
+texture = ExtResource("3_5vswo")
 
 [node name="AudioBell" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_bwrls")

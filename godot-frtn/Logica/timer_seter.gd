@@ -15,7 +15,7 @@ extends Node2D
 signal set_Timer(_time)
 
 func _ready():
-	minuteBtn.text = str(minutes)
+	minuteBtn.text = "%02d" % minutes
 	titlLab.text = setName
 
 func _on_up_pressed():
@@ -27,8 +27,10 @@ func _on_up_pressed():
 	elif  secBtn.button_pressed:
 		seconds += 1
 		if seconds > 59:
-			seconds = 1
+			seconds = 0
 		secBtn.text = "%02d" % seconds
+	
+	preveingZero()
 	send_To_Second(minutes,seconds)
 
 func _on_down_pressed():
@@ -39,9 +41,11 @@ func _on_down_pressed():
 		minuteBtn.text = "%02d" % minutes
 	elif  secBtn.button_pressed:
 		seconds -= 1
-		if seconds < 1:
+		if seconds < 0:
 			seconds = 59
 		secBtn.text = "%02d" % seconds
+	
+	preveingZero()
 	send_To_Second(minutes,seconds)
 
 func _on_minute_btn_toggled(toggled_on):
@@ -55,3 +59,8 @@ func _on_secds_btsn_toggled(toggled_on):
 func send_To_Second(_min, _sec):
 	var t = (_min*60) + _sec
 	set_Timer.emit(t)
+
+func preveingZero():
+	if seconds == 0 and minutes == 0:
+		seconds = 1
+		secBtn.text = "%02d" % seconds

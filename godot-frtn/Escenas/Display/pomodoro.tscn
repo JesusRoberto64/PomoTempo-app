@@ -1,7 +1,42 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6gk38tdoocjh"]
+[gd_scene load_steps=18 format=3 uid="uid://c6gk38tdoocjh"]
 
-[ext_resource type="Texture2D" uid="uid://cxi7egiwtl4ph" path="res://icon.svg" id="1_o3vtt"]
 [ext_resource type="Script" path="res://Logica/pomodoro.gd" id="1_ucvln"]
+[ext_resource type="Texture2D" uid="uid://cem6nwvx3xtuy" path="res://Recursos/Sprites/POMODORO_BG_00.png" id="2_2htqr"]
+[ext_resource type="AudioStream" uid="uid://ce1rdbgmf2efc" path="res://Recursos/Sound/Binder Clip Closing.wav" id="3_kj1jx"]
+[ext_resource type="AudioStream" uid="uid://se1pjk4apjbx" path="res://Recursos/Sound/Binder Clip Opening.wav" id="4_1h50i"]
+[ext_resource type="Texture2D" uid="uid://cbuhpeeqmlupb" path="res://Recursos/Sprites/pomodoro_break.png" id="4_j3od3"]
+[ext_resource type="FontFile" uid="uid://dmrocwdx2mbpf" path="res://Recursos/Sprites/LCD_NUMBERS.png" id="4_xumk2"]
+[ext_resource type="Texture2D" uid="uid://ddskmp0l615wl" path="res://Recursos/Sprites/skip.png" id="5_f4w5r"]
+[ext_resource type="Texture2D" uid="uid://bputo5oo416iw" path="res://Recursos/Sprites/break_pomodoro.png" id="5_oarlh"]
+[ext_resource type="Texture2D" uid="uid://cfo0464hibmiy" path="res://Recursos/Sprites/play_pause.png" id="6_xknxt"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u52i0"]
+texture = ExtResource("6_xknxt")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vq8kp"]
+content_margin_bottom = 11.0
+texture = ExtResource("6_xknxt")
+expand_margin_top = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fx1f5"]
+texture = ExtResource("6_xknxt")
+modulate_color = Color(0.244776, 0.244776, 0.244776, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uecyu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a10bn"]
+texture = ExtResource("5_f4w5r")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ungfl"]
+content_margin_bottom = 11.0
+texture = ExtResource("5_f4w5r")
+expand_margin_top = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uppam"]
+texture = ExtResource("5_f4w5r")
+modulate_color = Color(0.244776, 0.244776, 0.244776, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gl5jc"]
 
 [node name="Pomodoro" type="Node2D"]
 script = ExtResource("1_ucvln")
@@ -9,72 +44,66 @@ script = ExtResource("1_ucvln")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="BG" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 1)
-position = Vector2(104, 60)
-scale = Vector2(1.625, 0.9375)
-texture = ExtResource("1_o3vtt")
+texture = ExtResource("2_2htqr")
+centered = false
 
 [node name="TimerBG" type="Label" parent="."]
-modulate = Color(1, 1, 1, 0.176471)
-offset_left = 80.0
-offset_top = 8.0
-offset_right = 121.0
-offset_bottom = 31.0
-text = "00:00
+self_modulate = Color(0, 0.239216, 0.352941, 0.733333)
+offset_left = 81.0
+offset_top = 56.0
+offset_right = 253.0
+offset_bottom = 106.0
+theme_override_fonts/font = ExtResource("4_xumk2")
+theme_override_font_sizes/font_size = 50
+text = "88:88
 "
 
 [node name="TimerLab" type="Label" parent="."]
-offset_left = 77.0
-offset_top = 6.0
-offset_right = 118.0
-offset_bottom = 29.0
-text = "99:99"
-
-[node name="LabBG" type="Sprite2D" parent="."]
-modulate = Color(3.30899e-08, 0.186617, 0.022344, 1)
-position = Vector2(99, 45)
-scale = Vector2(0.921875, 0.21875)
-texture = ExtResource("1_o3vtt")
+offset_left = 81.0
+offset_top = 56.0
+offset_right = 216.0
+offset_bottom = 95.0
+theme_override_fonts/font = ExtResource("4_xumk2")
+theme_override_font_sizes/font_size = 50
+text = "11:11
+"
 
 [node name="LabPomodoro" type="Sprite2D" parent="."]
-self_modulate = Color(0, 0, 0, 1)
-position = Vector2(68, 57.5)
-scale = Vector2(0.4375, 0.351563)
-texture = ExtResource("1_o3vtt")
-
-[node name="Label" type="Label" parent="LabPomodoro"]
-offset_left = -49.0
-offset_top = -32.0
-offset_right = 41.0
-text = "POMDORO"
+position = Vector2(168, 120)
+texture = ExtResource("4_j3od3")
 
 [node name="LabBreak" type="Sprite2D" parent="."]
-self_modulate = Color(0, 0, 0, 1)
-position = Vector2(138.5, 57.5)
-scale = Vector2(0.460937, 0.351563)
-texture = ExtResource("1_o3vtt")
-
-[node name="Label" type="Label" parent="LabBreak"]
-offset_left = -30.1177
-offset_top = -32.0
-offset_right = 20.8823
-offset_bottom = -9.0
-text = "BREAK"
+position = Vector2(168, 120)
+texture = ExtResource("5_oarlh")
 
 [node name="playPause" type="Button" parent="."]
-offset_top = 64.0
-offset_right = 93.0
-offset_bottom = 95.0
+offset_left = 56.0
+offset_top = 160.0
+offset_right = 163.0
+offset_bottom = 208.0
 focus_mode = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_u52i0")
+theme_override_styles/hover = SubResource("StyleBoxTexture_vq8kp")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fx1f5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uecyu")
 toggle_mode = true
-text = "Play/Pause"
 
 [node name="skip" type="Button" parent="."]
-offset_left = 96.0
-offset_top = 64.0
-offset_right = 189.0
-offset_bottom = 95.0
-text = "SKIP"
+offset_left = 184.0
+offset_top = 160.0
+offset_right = 291.0
+offset_bottom = 208.0
+focus_mode = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_a10bn")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ungfl")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_uppam")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gl5jc")
+
+[node name="clack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_kj1jx")
+
+[node name="clack2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_1h50i")
 
 [connection signal="timeout" from="Timer" to="." method="alarm_Timeout"]
 [connection signal="pressed" from="playPause" to="." method="_on_play_pause_pressed"]
