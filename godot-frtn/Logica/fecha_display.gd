@@ -20,22 +20,23 @@ signal is_Today(_bool)
 
 
 func _ready():
-	var t = Time.get_date_dict_from_system()
-	today = {"year": t.year, "month": t.month, "day": t.day}
-	currentDay = today 
-	forwardBtn.disabled = true
+	#var t = Time.get_date_dict_from_system()
+	#today = {"year": t.year, "month": t.month, "day": t.day}
+	#currentDay = today 
+	#forwardBtn.disabled = true
 	#Format Date is "YEAR-Month-Day" in integers Ex. 2024-01-01
 	#parse_date is use to convert Time dictionary same as the Database format
 	#format_date is use to draw in the UI as calendar returning strings
 	#process_Date(today)
-	call_deferred("process_Date", today)
+	#call_deferred("process_Date", today)
+	pass
 
 func process_Date(_curDate):
 	var formated_Date = format_Date(_curDate)
 	send_Date_Req.emit(formated_Date)
 	parse_Date(formated_Date)
 
-#Get today date & Change format date
+#Get today date & Change format date 
 func format_Date(curDate):
 	var y = str(curDate["year"])
 	var m = "%02d" % curDate["month"]

@@ -1,6 +1,6 @@
 extends Node
-#Fechas id(int) : {idMisiones(Array) : pomdotos(in), etc... }
-# Im serching to register pomodotos per mision per date(fecha)
+#Fechas id(int) : {idMisiones(Array) : pomodoros(in), ... }
+# Im serching to register pomodoros per mision per date(fecha)
 var register = {
 	0 : { 0:2, 1:3 },
 	1 : { 2:4 },

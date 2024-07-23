@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://qhkh5cl0ia86"]
+[gd_scene load_steps=11 format=3 uid="uid://qhkh5cl0ia86"]
 
 [ext_resource type="Script" path="res://Logica/main_screen.gd" id="1_45agk"]
 [ext_resource type="PackedScene" uid="uid://c6gk38tdoocjh" path="res://Escenas/Display/pomodoro.tscn" id="1_wi186"]
 [ext_resource type="PackedScene" uid="uid://da540mfpl0xwf" path="res://Escenas/Display/fecha_display.tscn" id="2_hmeib"]
 [ext_resource type="PackedScene" uid="uid://dvwd1g1p04v7" path="res://Escenas/Display/alarm.tscn" id="2_jbx1w"]
+[ext_resource type="PackedScene" uid="uid://cr5qmqsvsp2fo" path="res://Escenas/Protocols/date_controller.tscn" id="3_2ujs4"]
 [ext_resource type="PackedScene" uid="uid://djavrnimm0hwa" path="res://Escenas/Display/mision_mini_panel.tscn" id="4_on8gy"]
 [ext_resource type="PackedScene" uid="uid://bwjitqx3ash3u" path="res://Escenas/Display/add_mision.tscn" id="5_er0ne"]
 [ext_resource type="Script" path="res://Logica/dummie_response.gd" id="6_p75cs"]
@@ -12,6 +13,8 @@
 
 [node name="MainScreen" type="Node2D"]
 script = ExtResource("1_45agk")
+
+[node name="DateController" parent="." instance=ExtResource("3_2ujs4")]
 
 [node name="Fecha_Display" parent="." instance=ExtResource("2_hmeib")]
 position = Vector2(560, 31)

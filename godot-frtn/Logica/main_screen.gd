@@ -1,4 +1,4 @@
-extends Node2D
+extends StateController
 
 @onready var Pomodoro = $Pomodoro
 @onready var Alarm = $Alarm
@@ -10,6 +10,9 @@ extends Node2D
 
 #Clients
 @onready var client = $ParsedClient
+
+#STATESCONTROLLER
+@onready var dateControlller = $DateController
 
 func _ready():
 	Pomodoro.pomodoro_alarm.connect(PanelMision.add_Pomodoro)
@@ -28,6 +31,10 @@ func _ready():
 	
 	timerSeterPomo.set_Timer.connect(Pomodoro.set_Pomodoro_Timer)
 	timerSeterBreak.set_Timer.connect(Pomodoro.set_Break_Timer)
+	get_Today_String(dateControlller)
+	set_Date_Display(DateDisplay)
+	#print(today)
+
 
 func no_Record():
 	PanelMision.reset_Panel()
