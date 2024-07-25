@@ -87,6 +87,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_h3bpi")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_7lxmf")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_0ms81")
 theme_override_styles/focus = SubResource("StyleBoxTexture_0ms81")
+disabled = true
 
 [node name="DateArithmethics" type="Node" parent="."]
 script = ExtResource("3_066f1")

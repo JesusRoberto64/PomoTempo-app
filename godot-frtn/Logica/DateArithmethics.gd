@@ -10,10 +10,10 @@ func get_Days_In_Month(year: int, month: int)-> int:
 		return 29
 	return daysInMonth[month - 1]
 
-func add_days(date_dict, days_to_add)-> Dictionary:
-	var year = date_dict.year
-	var month = date_dict.month
-	var day = date_dict.day
+func add_days(_date, days_to_add: int)-> String:
+	var year = int(_date.get_slice("-",0))
+	var month = int(_date.get_slice("-",1))
+	var day = int(_date.get_slice("-",2))
 	
 	#Determin the direction add or subtract, base on number's sign 
 	var s = sign(days_to_add)
@@ -40,7 +40,7 @@ func add_days(date_dict, days_to_add)-> Dictionary:
 				day = get_Days_In_Month(year, month)
 			days_to_add -= 1
 	
-	return {"year": year, "month": month, "day": day}
+	return "%d-%02d-%02d" % [year, month, day]#{"year": year, "month": month, "day": day}
 
 
 

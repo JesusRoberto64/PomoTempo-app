@@ -8,3 +8,16 @@ var register = {
 	3: {"nombre": "PomoTempo", "id" : 3},
 }
 
+func get_Misiones()->Array:
+	var misiones = self.register
+	var misionesArr = []
+	for i in misiones.keys():
+		misionesArr.append(misiones.get(i).nombre)
+	return misionesArr
+
+func get_Misiones_Id()->Array:
+	var misiones = self.register
+	var misionesArr = []
+	for i in misiones.keys():
+		misionesArr.append(misiones.get(i).id)
+	return misionesArr

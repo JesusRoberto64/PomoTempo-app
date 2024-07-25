@@ -16,6 +16,8 @@ extends Node2D
 var curPanel = 0
 var curMision = 0
 
+signal on_Add_Mision(_name: String)
+
 func _on_back_pressed():
 	if misiones.size() == 0: return
 	var nextIndx = curPanel - 1
@@ -23,7 +25,7 @@ func _on_back_pressed():
 	curPanel = (nextIndx % misiones.size() + misiones.size()) % misiones.size()
 	titleLabel.text = misiones[curPanel]
 	set_Selected_Mision()
-	get_Pomodoros_Mision(pomoArr[curPanel])
+	set_Pomodoros_Mision(pomoArr[curPanel])
 
 func _on_forward_pressed():
 	if misiones.size() == 0: return
@@ -31,7 +33,7 @@ func _on_forward_pressed():
 	titleLabel.text = misiones[nextIndx % misiones.size()]
 	curPanel = nextIndx % misiones.size()
 	set_Selected_Mision()
-	get_Pomodoros_Mision(pomoArr[curPanel])
+	set_Pomodoros_Mision(pomoArr[curPanel])
 
 func _on_selected_toggled(toggled_on):
 	if toggled_on:
@@ -47,7 +49,7 @@ func set_Selected_Mision():
 	else:
 		selectedBtn.button_pressed = true
 
-func get_Pomodoros_Mision(_pomodoros):
+func set_Pomodoros_Mision(_pomodoros: int):
 	#tomar la mision id
 	numberLab.text = "x" + str(_pomodoros)
 	
@@ -62,7 +64,7 @@ func get_Pomodoros_Mision(_pomodoros):
 	for i in range(_pomodoros):
 		pomoPanel.get_child(i).show()
 
-func fetch_Misions(_misiones, _pomodoros):
+func fetch_Misions_Pomodoros(_misiones: Array, _pomodoros: Array):
 	if _misiones.size() == 0:
 		print("Error empty array")
 		return
@@ -78,21 +80,18 @@ func fetch_Misions(_misiones, _pomodoros):
 	curMision = curPanel
 	
 	set_Selected_Mision()
-	get_Pomodoros_Mision(pomoArr[curPanel])
+	set_Pomodoros_Mision(pomoArr[curPanel])
 
 func add_Mision(_new):
-	if typeof(_new) == TYPE_STRING:
-		misiones.append(_new)
-		pomoArr.append(0)
-	else:
-		print("Error Format: expected string or array")
-		return
+	misiones.append(_new)
+	pomoArr.append(0)
 	
 	titleLabel.text = misiones[misiones.size()-1]
 	curPanel = misiones.size()-1
 	curMision = curPanel
 	set_Selected_Mision()
-	get_Pomodoros_Mision(pomoArr[curPanel])
+	set_Pomodoros_Mision(pomoArr[curPanel])
+	on_Add_Mision.emit(_new)
 
 func add_Pomodoro():
 	if misiones.size() == 0: return
@@ -101,11 +100,20 @@ func add_Pomodoro():
 	curPanel = curMision
 	titleLabel.text = misiones[curPanel]
 	
-	get_Pomodoros_Mision(pomoArr[curPanel])
+	set_Pomodoros_Mision(pomoArr[curPanel])
 	set_Selected_Mision()
 
 func reset_Panel():
 	for i in pomoPanel.get_children():
 		i.hide()
-	numberLab.text = "x0" 
+	numberLab.text = "x0"
+	
+	var resetArr = []
+	for m in pomoArr.size():
+		resetArr.append(0)
+	pomoArr = resetArr
+
+func refresh_Pomodoros(_newPomodoros : Array):
+	pomoArr = _newPomodoros
+	set_Pomodoros_Mision(pomoArr[curPanel])
 	

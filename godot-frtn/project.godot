@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 Fechas01="*res://Logica/DataBaseModels/Fechas.gd"
 Misiones="*res://Logica/DataBaseModels/Misiones.gd"
-MisionesRegister="*res://Logica/DataBaseModels/RegistroMision.gd"
+MisionesRegister="*res://Logica/DataBaseModels/MisionRegistro.gd"
 FechasMisionRegistro="*res://Logica/DataBaseModels/fechas_mision_registro.gd"
 
 [display]

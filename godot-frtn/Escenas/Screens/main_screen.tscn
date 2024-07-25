@@ -38,7 +38,7 @@ offset_top = 463.0
 offset_right = 826.0
 offset_bottom = 501.0
 
-[node name="ParsedClient" type="Node" parent="."]
+[node name="Client" type="Node" parent="."]
 script = ExtResource("8_1tnpm")
 
 [node name="DummieResponse" type="Node2D" parent="."]

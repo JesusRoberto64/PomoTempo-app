@@ -11,13 +11,3 @@ var register = {
 	6 : { 0:5 }
 }
 
-func add_Regiter(_id):
-	if register.has(_id):
-		
-		pass
-	else:
-		var newEntry = { _id : { 0 : 0 } }
-		register.merge(newEntry)
-		print(register)
-		pass
-	pass

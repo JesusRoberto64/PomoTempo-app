@@ -10,9 +10,10 @@ func get_Today_String() -> String:
 	var t = Time.get_date_dict_from_system()
 	return format_Date(t.year, t.month, t.day)
 
-func adjust_Days(date: String, days: int) -> String:
-	var adjustedDate = add_days(date, days)
-	return format_Date(adjustedDate.year, adjustedDate.month, adjustedDate.day)
+func adjust_Days(date: String, _add_days: int) -> String:
+	return add_days(date, _add_days)
+	#var adjustedDate = add_days(date, days)
+	#return format_Date(adjustedDate.year, adjustedDate.month, adjustedDate.day)
 
 func get_Day_Before(_formatDate)-> String:
 	return adjust_Days(_formatDate, -1)

@@ -8,11 +8,9 @@ extends StateController
 @onready var timerSeterPomo = $Timer_Seter_Pomodoro
 @onready var timerSeterBreak = $Timer_Seter_Break
 
-#Clients
-@onready var client = $ParsedClient
+@onready var Client = $Client
 
-#STATESCONTROLLER
-@onready var dateControlller = $DateController
+@onready var DateControlller = $DateController
 
 func _ready():
 	Pomodoro.pomodoro_alarm.connect(PanelMision.add_Pomodoro)
@@ -22,27 +20,30 @@ func _ready():
 	
 	AddMision.send_Mision.connect(PanelMision.add_Mision)
 	
-	DateDisplay.send_Date_Req.connect(client.response_Id_Date)
-	DateDisplay.is_Today.connect(set_Today)
+	PanelMision
 	
-	client.send_Mision_Pomo.connect(PanelMision.fetch_Misions)
-	client.send_Pomo_Date.connect(DateDisplay.set_Pomodoro)
-	client.no_Record.connect(no_Record)
+	DateDisplay.on_Date_Change.connect(on_Date_Change)
 	
 	timerSeterPomo.set_Timer.connect(Pomodoro.set_Pomodoro_Timer)
 	timerSeterBreak.set_Timer.connect(Pomodoro.set_Break_Timer)
-	get_Today_String(dateControlller)
-	set_Date_Display(DateDisplay)
-	#print(today)
+	
+	init_Today(DateControlller, DateDisplay, PanelMision, Client)
+
+func on_Date_Change(_add):
+	currentDay = DateControlller.adjust_Days(currentDay,_add)
+	set_Date_Display(DateDisplay, currentDay)
+	DateDisplay.currentDay = currentDay
+	
+	if !Fechas01.registers.has(currentDay): 
+		PanelMision.reset_Panel()
+		return
+	
+	fetch_Date_Pomodoro(DateDisplay, currentDay)
+	var refreshPomo = get_Pomodoro_Date_Arr(currentDay)
+	PanelMision.refresh_Pomodoros(refreshPomo)
+	
 
 
-func no_Record():
-	PanelMision.reset_Panel()
 
-func set_Today(_bool):
-	if _bool:
-		AddMision.show()
-	else:
-		AddMision.hide()
 
 
