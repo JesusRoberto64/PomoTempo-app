@@ -82,7 +82,7 @@ func fetch_Misions_Pomodoros(_misiones: Array, _pomodoros: Array):
 	set_Selected_Mision()
 	set_Pomodoros_Mision(pomoArr[curPanel])
 
-func add_Mision(_new):
+func add_Mision(_new: String):
 	misiones.append(_new)
 	pomoArr.append(0)
 	

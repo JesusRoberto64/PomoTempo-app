@@ -22,7 +22,7 @@ metadata/_edit_vertical_guides_ = [176.0]
 
 [node name="Pomodoro" parent="." instance=ExtResource("1_wi186")]
 position = Vector2(160, 8)
-Pomodoro = 3.0
+Pomodoro = 2.0
 
 [node name="Alarm" parent="." instance=ExtResource("2_jbx1w")]
 position = Vector2(160, 260)

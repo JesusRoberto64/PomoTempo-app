@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://da540mfpl0xwf"]
+[gd_scene load_steps=10 format=3 uid="uid://da540mfpl0xwf"]
 
 [ext_resource type="Script" path="res://Logica/fecha_display.gd" id="1_jsfau"]
 [ext_resource type="Texture2D" uid="uid://denpcklsnq074" path="res://Recursos/Sprites/pomodoro.png" id="2_kjjf7"]
-[ext_resource type="Script" path="res://Logica/DateArithmethics.gd" id="3_066f1"]
 [ext_resource type="FontFile" uid="uid://br40grkrm3qqp" path="res://Recursos/Fonts/Montserrat-BoldItalic.ttf" id="3_k6by3"]
 [ext_resource type="Texture2D" uid="uid://bqqnp6naajdf7" path="res://Recursos/Sprites/calendario.png" id="3_ppxk8"]
 [ext_resource type="Texture2D" uid="uid://dfw536u284wcx" path="res://Recursos/Sprites/triangulo.png" id="4_rndpy"]
@@ -88,9 +87,6 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_7lxmf")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_0ms81")
 theme_override_styles/focus = SubResource("StyleBoxTexture_0ms81")
 disabled = true
-
-[node name="DateArithmethics" type="Node" parent="."]
-script = ExtResource("3_066f1")
 
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="forwar" to="." method="_on_forwar_pressed"]

@@ -13,8 +13,6 @@ var monDict = {1:"ENE",2:"FEB",3:"MAR",4:"ABR",5:"MAY",6:"JUN",7:"JUL",8:"AGO",9
 var today
 var currentDay
 
-@onready var DateArith = $DateArithmethics 
-
 signal on_Date_Change(_add)
 
 func parse_Date(_date:String):

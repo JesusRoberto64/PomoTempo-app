@@ -101,9 +101,11 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_gl5jc")
 
 [node name="clack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_kj1jx")
+volume_db = -10.0
 
 [node name="clack2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_1h50i")
+volume_db = -10.0
 
 [connection signal="timeout" from="Timer" to="." method="alarm_Timeout"]
 [connection signal="pressed" from="playPause" to="." method="_on_play_pause_pressed"]

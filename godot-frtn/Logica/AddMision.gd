@@ -20,6 +20,7 @@ func _ready():
 		send_Request.connect(client.send_Request)
 	else:
 		client = null
+	
 
 func on_Button_Pressed():
 	if textEdit.text == "":
@@ -50,3 +51,8 @@ func disble_Add():
 
 func enable_Add():
 	textEdit.set_editable(false)
+
+func _input(event):
+	if event.is_action_pressed("ui_accept") and textEdit.has_focus():
+		on_Button_Pressed()
+		textEdit.release_focus()

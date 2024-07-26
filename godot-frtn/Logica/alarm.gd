@@ -22,8 +22,9 @@ func break_Alarm():
 func _on_plus_pressed():
 	volume += 2
 	volume = min(volume,maxVol)
-	audioTest.volume_db = volume
-	audioBell.volume_db = volume
+	#audioTest.volume_db = volume
+	#audioBell.volume_db = volume
+	AudioServer.set_bus_volume_db(0,volume)
 	audioTest.play()
 
 func _on_minus_pressed():
@@ -32,9 +33,11 @@ func _on_minus_pressed():
 	if volume <= minVol:
 		#Mute = volume = -14
 		return
-	audioTest.volume_db = volume
-	audioBell.volume_db = volume
+	#audioTest.volume_db = volume
+	#audioBell.volume_db = volume
+	AudioServer.set_bus_volume_db(0,volume)
 	audioTest.play()
+	
 
 
 

@@ -16,11 +16,12 @@ func _ready():
 	Pomodoro.pomodoro_alarm.connect(PanelMision.add_Pomodoro)
 	Pomodoro.pomodoro_alarm.connect(DateDisplay.add_Pomodoro)
 	Pomodoro.pomodoro_alarm.connect(Alarm.pomodoro_Alarm)
+	Pomodoro.pomodoro_alarm.connect(on_Add_Pomodoro)
 	Pomodoro.break_alarm.connect(Alarm.break_Alarm)
 	
 	AddMision.send_Mision.connect(PanelMision.add_Mision)
 	
-	PanelMision
+	PanelMision.on_Add_Mision.connect(Client.create_new_mision)
 	
 	DateDisplay.on_Date_Change.connect(on_Date_Change)
 	
@@ -31,17 +32,54 @@ func _ready():
 
 func on_Date_Change(_add):
 	currentDay = DateControlller.adjust_Days(currentDay,_add)
-	set_Date_Display(DateDisplay, currentDay)
-	DateDisplay.currentDay = currentDay
+	update_date_display()
+	#set_Date_Display(DateDisplay, currentDay)
+	#DateDisplay.currentDay = currentDay
 	
 	if !Fechas01.registers.has(currentDay): 
 		PanelMision.reset_Panel()
-		return
+	else:
+		update_pomodoro_display()
+		pass
 	
+	#fetch_Date_Pomodoro(DateDisplay, currentDay)
+	#var refreshPomo = get_Pomodoro_Date_Arr(currentDay)
+	#PanelMision.refresh_Pomodoros(refreshPomo)
+
+func update_date_display():
+	set_Date_Display(DateDisplay, currentDay)
+	DateDisplay.currentDay = currentDay
+
+func update_pomodoro_display():
 	fetch_Date_Pomodoro(DateDisplay, currentDay)
 	var refreshPomo = get_Pomodoro_Date_Arr(currentDay)
 	PanelMision.refresh_Pomodoros(refreshPomo)
-	
+
+func on_Add_Pomodoro():
+	Client.add_pomodoro_Display(today)
+	var curretMisionId = get_current_Mision_Id()
+	#Client.add_pomodoro_mision(curretMisionId)
+	#Client.add_pomo_fecha_mision(curretMisionId)
+	add_pomodoro_to_mision(curretMisionId)
+	if currentDay != today:
+		currentDay = today
+		update_date_display()
+		#set_Date_Display(DateDisplay, currentDay)
+		#DateDisplay.currentDay = currentDay
+		DateDisplay.forwardBtn.disabled = true
+		update_pomodoro_display()
+		#fetch_Date_Pomodoro(DateDisplay, currentDay)
+		#var refreshPomo = get_Pomodoro_Date_Arr(currentDay)
+		#PanelMision.refresh_Pomodoros(refreshPomo)
+
+func add_pomodoro_to_mision(_misionId: int):
+	Client.add_pomodoro_mision(_misionId)
+	Client.add_pomo_fecha_mision(_misionId)
+
+func get_current_Mision_Id()->int:
+	var curMisionIndex :int = PanelMision.curMision
+	return Misiones.register[curMisionIndex].id
+
 
 
 

@@ -11,6 +11,7 @@ script = ExtResource("1_31aww")
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Add Mision"
+context_menu_enabled = false
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 2
