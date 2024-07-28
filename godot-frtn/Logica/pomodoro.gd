@@ -25,6 +25,8 @@ signal pomodoro_alarm
 @onready var clackSnd = $clack
 @onready var clack2Snd = $clack2
 
+var keysBlocked = false
+
 func _ready():
 	timer.wait_time = Pomodoro
 	holdTime = Pomodoro
@@ -73,7 +75,7 @@ func change_Pomodoro_State():
 		labBreak.show()
 		timer.wait_time = Break
 		holdTime = Break
-	else:
+	elif curPomoState == POMOSTATE.BREAK:
 		curPomoState = POMOSTATE.POMODORO
 		labPomodoro.show()
 		labBreak.hide()
@@ -108,3 +110,17 @@ func set_Break_Timer(_time):
 	if curPomoState == POMOSTATE.BREAK:
 		holdTime = Break
 
+func _input(event):
+	if keysBlocked: return
+	if event.is_action_pressed("skip"):
+		skipBtn.toggle_mode = true
+		skipBtn.set_pressed(true)
+		change_Pomodoro_State()
+		var tween = get_tree().create_tween()
+		tween.tween_callback(skipBtn.set_toggle_mode.bind(false)).set_delay(0.1)
+	elif event.is_action_pressed("play_pause"):
+		if playPauseBtn.button_pressed:
+			playPauseBtn.button_pressed = false
+		else:
+			playPauseBtn.button_pressed = true
+		_on_play_pause_pressed()

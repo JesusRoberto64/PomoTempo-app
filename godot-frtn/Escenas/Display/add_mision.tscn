@@ -1,19 +1,48 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwjitqx3ash3u"]
+[gd_scene load_steps=4 format=3 uid="uid://bwjitqx3ash3u"]
 
 [ext_resource type="Script" path="res://Logica/AddMision.gd" id="1_31aww"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8y6t4"]
+content_margin_left = 6.0
+bg_color = Color(0.156863, 0.168627, 0.239216, 0.839216)
+border_width_left = 1
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.0968339, 0.101439, 0.13381, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_scij8"]
+bg_color = Color(0.0941176, 0.105882, 0.180392, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 7
+border_color = Color(0.768627, 0.0980392, 0.0980392, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 12
+
 [node name="AddMision" type="HBoxContainer"]
-offset_right = 298.0
+offset_right = 376.0
 offset_bottom = 38.0
 script = ExtResource("1_31aww")
 
 [node name="TextEdit" type="TextEdit" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_8y6t4")
 placeholder_text = "Add Mision"
 context_menu_enabled = false
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 2
 size_flags_horizontal = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_scij8")
 text = "  +  "
+
+[connection signal="focus_entered" from="TextEdit" to="." method="_on_text_edit_focus_entered"]

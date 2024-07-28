@@ -32,12 +32,13 @@ texture = ExtResource("2_kjjf7")
 centered = false
 
 [node name="pomdoros" type="Label" parent="."]
-offset_left = 85.0
-offset_top = 63.0
-offset_right = 125.0
-offset_bottom = 89.0
+offset_left = 74.0
+offset_top = 46.0
+offset_right = 119.0
+offset_bottom = 91.0
+theme_override_colors/font_color = Color(0.054902, 0.054902, 0.145098, 1)
 theme_override_fonts/font = ExtResource("3_k6by3")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 36
 text = "x0"
 
 [node name="calendarText" type="Sprite2D" parent="."]
@@ -60,7 +61,7 @@ offset_left = 22.0
 offset_top = 50.0
 offset_right = 62.0
 offset_bottom = 73.0
-theme_override_colors/font_color = Color(0.310617, 0.310617, 0.310617, 1)
+theme_override_colors/font_color = Color(0.917647, 0.854902, 0.780392, 1)
 theme_override_fonts/font = ExtResource("3_k6by3")
 theme_override_font_sizes/font_size = 18
 text = "JUN"

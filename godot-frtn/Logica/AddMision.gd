@@ -13,6 +13,8 @@ signal send_Mision(mision: String)
 var edited_Text :String= ""
 var id: int
 
+signal on_Text_Edit(isInput: bool)
+
 func _ready():
 	button.pressed.connect(on_Button_Pressed)
 	
@@ -23,6 +25,7 @@ func _ready():
 	
 
 func on_Button_Pressed():
+	on_Text_Edit.emit(textEdit.has_focus())
 	if textEdit.text == "":
 		textEdit.placeholder_text = "Add a name!"
 		return
@@ -56,3 +59,7 @@ func _input(event):
 	if event.is_action_pressed("ui_accept") and textEdit.has_focus():
 		on_Button_Pressed()
 		textEdit.release_focus()
+		on_Text_Edit.emit(textEdit.has_focus())
+
+func _on_text_edit_focus_entered():
+	on_Text_Edit.emit(textEdit.has_focus())

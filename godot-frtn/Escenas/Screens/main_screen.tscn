@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://qhkh5cl0ia86"]
+[gd_scene load_steps=14 format=3 uid="uid://qhkh5cl0ia86"]
 
 [ext_resource type="Script" path="res://Logica/main_screen.gd" id="1_45agk"]
 [ext_resource type="PackedScene" uid="uid://c6gk38tdoocjh" path="res://Escenas/Display/pomodoro.tscn" id="1_wi186"]
@@ -10,33 +10,46 @@
 [ext_resource type="Script" path="res://Logica/dummie_response.gd" id="6_p75cs"]
 [ext_resource type="Script" path="res://Logica/Client/ParsedClient.gd" id="8_1tnpm"]
 [ext_resource type="PackedScene" uid="uid://bwsvr1rujp3an" path="res://Escenas/Display/timer_seter.tscn" id="9_as0sm"]
+[ext_resource type="FontFile" uid="uid://br40grkrm3qqp" path="res://Recursos/Fonts/Montserrat-BoldItalic.ttf" id="11_6eylm"]
+[ext_resource type="Script" path="res://Logica/ShortCutsCtrl.gd" id="11_bpcbm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_56vi5"]
+bg_color = Color(0.0941176, 0.105882, 0.180392, 1)
+corner_radius_bottom_right = 25
 
 [node name="MainScreen" type="Node2D"]
 script = ExtResource("1_45agk")
+metadata/_edit_vertical_guides_ = [16.0]
+
+[node name="Acordeon" type="Panel" parent="."]
+offset_right = 152.0
+offset_bottom = 272.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_56vi5")
 
 [node name="DateController" parent="." instance=ExtResource("3_2ujs4")]
 
 [node name="Fecha_Display" parent="." instance=ExtResource("2_hmeib")]
-position = Vector2(560, 31)
+position = Vector2(646, 16)
 metadata/_edit_vertical_guides_ = [176.0]
 
 [node name="Pomodoro" parent="." instance=ExtResource("1_wi186")]
-position = Vector2(160, 8)
+position = Vector2(200, 24)
 Pomodoro = 2.0
 
 [node name="Alarm" parent="." instance=ExtResource("2_jbx1w")]
-position = Vector2(160, 260)
+position = Vector2(200, 276)
 
 [node name="MisionMiniPanel" parent="." instance=ExtResource("4_on8gy")]
-position = Vector2(576, 183)
+position = Vector2(640, 113)
 misiones = []
 pomoArr = []
+metadata/_edit_horizontal_guides_ = [24.0]
 
 [node name="AddMision" parent="." instance=ExtResource("5_er0ne")]
-offset_left = 528.0
-offset_top = 463.0
-offset_right = 826.0
-offset_bottom = 501.0
+offset_left = 640.0
+offset_top = 496.0
+offset_right = 952.0
+offset_bottom = 534.0
 
 [node name="Client" type="Node" parent="."]
 script = ExtResource("8_1tnpm")
@@ -61,5 +74,57 @@ position = Vector2(16, 8)
 position = Vector2(16, 128)
 minutes = 5
 setName = "Break"
+
+[node name="ShortCutsCtrl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 472.0
+offset_right = 40.0
+offset_bottom = 512.0
+script = ExtResource("11_bpcbm")
+
+[node name="screenMode" type="Label" parent="ShortCutsCtrl"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = -8.0
+offset_right = 133.0
+offset_bottom = 15.0
+theme_override_colors/font_color = Color(0.0941176, 0.105882, 0.180392, 1)
+theme_override_fonts/font = ExtResource("11_6eylm")
+theme_override_font_sizes/font_size = 14
+text = "F5: FullScreen"
+
+[node name="esc" type="Label" parent="ShortCutsCtrl"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 133.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(0.0941176, 0.105882, 0.180392, 1)
+theme_override_fonts/font = ExtResource("11_6eylm")
+theme_override_font_sizes/font_size = 14
+text = "ESC:  Quit"
+
+[node name="spacebar" type="Label" parent="ShortCutsCtrl"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = -32.0
+offset_right = 133.0
+offset_bottom = -9.0
+theme_override_colors/font_color = Color(0.0941176, 0.105882, 0.180392, 1)
+theme_override_fonts/font = ExtResource("11_6eylm")
+theme_override_font_sizes/font_size = 14
+text = "Spacebar: Play"
+
+[node name="spacebar2" type="Label" parent="ShortCutsCtrl"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 40.0
+offset_right = 133.0
+offset_bottom = 63.0
+theme_override_colors/font_color = Color(0.0941176, 0.105882, 0.180392, 1)
+theme_override_fonts/font = ExtResource("11_6eylm")
+theme_override_font_sizes/font_size = 14
+text = "TAB: Skip"
 
 [connection signal="pressed" from="DummieResponse/ButtonFetched" to="DummieResponse" method="_on_button_pressed"]

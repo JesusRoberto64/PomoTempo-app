@@ -18,6 +18,8 @@ var curMision = 0
 
 signal on_Add_Mision(_name: String)
 
+var isMisionSelected :bool = true
+
 func _on_back_pressed():
 	if misiones.size() == 0: return
 	var nextIndx = curPanel - 1
@@ -38,10 +40,10 @@ func _on_forward_pressed():
 func _on_selected_toggled(toggled_on):
 	if toggled_on:
 		curMision = curPanel
-		return
-	if toggled_on == false and curMision == curPanel:
+		isMisionSelected = true
+	elif toggled_on == false and curMision == curPanel:
 		curMision = misiones.size()
-		return
+		isMisionSelected = false
 
 func set_Selected_Mision():
 	if curMision != curPanel:
@@ -94,7 +96,9 @@ func add_Mision(_new: String):
 	on_Add_Mision.emit(_new)
 
 func add_Pomodoro():
-	if misiones.size() == 0: return
+	if misiones.size() == 0 or !isMisionSelected: 
+		return
+	
 	pomoArr[curMision] += 1
 	
 	curPanel = curMision
