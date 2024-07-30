@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cmrn3f4jx1g62"]
+[gd_resource type="Resource" load_steps=2 format=3]
 
 [ext_resource type="Script" path="res://Logica/DataBaseModels/DataResource.gd" id="1_fjva4"]
 
@@ -7,12 +7,12 @@ script = ExtResource("1_fjva4")
 fechas = {
 "2024-07-30": {
 "id": 0,
-"pomodoro": 4
+"pomodoro": 5
 }
 }
 fechasMisionRegistro = {
 0: {
-0: 2,
+0: 3,
 1: 2
 }
 }
@@ -29,7 +29,7 @@ misiones = {
 misionResgistro = {
 0: {
 "mision": "nueva misión",
-"pomodoro": 4
+"pomodoro": 5
 },
 1: {
 "mision": "Escribir ensayo",

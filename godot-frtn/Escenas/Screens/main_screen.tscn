@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://qhkh5cl0ia86"]
+[gd_scene load_steps=20 format=3 uid="uid://qhkh5cl0ia86"]
 
 [ext_resource type="Script" path="res://Logica/main_screen.gd" id="1_45agk"]
 [ext_resource type="PackedScene" uid="uid://c6gk38tdoocjh" path="res://Escenas/Display/pomodoro.tscn" id="1_wi186"]
@@ -13,10 +13,40 @@
 [ext_resource type="PackedScene" uid="uid://bwsvr1rujp3an" path="res://Escenas/Display/timer_seter.tscn" id="9_as0sm"]
 [ext_resource type="FontFile" uid="uid://br40grkrm3qqp" path="res://Recursos/Fonts/Montserrat-BoldItalic.ttf" id="11_6eylm"]
 [ext_resource type="Script" path="res://Logica/ShortCutsCtrl.gd" id="11_bpcbm"]
+[ext_resource type="Texture2D" uid="uid://dfw536u284wcx" path="res://Recursos/Sprites/triangulo.png" id="14_oecqn"]
+[ext_resource type="Shader" path="res://Recursos/Materials/mision_mini_panel.gdshader" id="15_wnwa7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_56vi5"]
 bg_color = Color(0.0941176, 0.105882, 0.180392, 1)
 corner_radius_bottom_right = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tacw7"]
+bg_color = Color(0.0941176, 0.105882, 0.180392, 0.878431)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.768627, 0.0980392, 0.0980392, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_offset = Vector2(5, 5)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2gqg"]
+bg_color = Color(0.0941176, 0.105882, 0.180392, 0.878431)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wslya"]
+shader = ExtResource("15_wnwa7")
+shader_parameter/circle_width = 0.25
+shader_parameter/wait_time = 0.5
+shader_parameter/speed = 0.8
+shader_parameter/alpha_boost = 2.0
 
 [node name="MainScreen" type="Node2D"]
 script = ExtResource("1_45agk")
@@ -128,5 +158,57 @@ theme_override_colors/font_color = Color(0.0941176, 0.105882, 0.180392, 1)
 theme_override_fonts/font = ExtResource("11_6eylm")
 theme_override_font_sizes/font_size = 14
 text = "TAB: Skip"
+
+[node name="Tutorial" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="Panel" type="Panel" parent="Tutorial"]
+layout_mode = 1
+offset_left = 182.0
+offset_top = 292.0
+offset_right = 566.0
+offset_bottom = 412.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tacw7")
+metadata/_edit_group_ = true
+
+[node name="Panel" type="Panel" parent="Tutorial/Panel"]
+visible = false
+layout_mode = 0
+offset_left = -1.0
+offset_top = -3.0
+offset_right = 375.0
+offset_bottom = 109.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_n2gqg")
+
+[node name="Label" type="Label" parent="Tutorial/Panel"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 27.0
+offset_right = 309.0
+offset_bottom = 88.0
+theme_override_fonts/font = ExtResource("11_6eylm")
+text = "sdfdsfsdff"
+
+[node name="triangulo" type="TextureRect" parent="Tutorial"]
+layout_mode = 0
+offset_left = 283.0
+offset_top = 244.0
+offset_right = 323.0
+offset_bottom = 284.0
+texture = ExtResource("14_oecqn")
+
+[node name="notificaciton" type="ColorRect" parent="Tutorial"]
+material = SubResource("ShaderMaterial_wslya")
+layout_mode = 0
+offset_left = 356.0
+offset_top = 246.0
+offset_right = 396.0
+offset_bottom = 286.0
 
 [connection signal="pressed" from="DummieResponse/ButtonFetched" to="DummieResponse" method="_on_button_pressed"]
