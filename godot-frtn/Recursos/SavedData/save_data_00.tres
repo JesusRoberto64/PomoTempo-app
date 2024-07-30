@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cklrfeiiuyjlp"]
+
+[ext_resource type="Script" path="res://Logica/DataBaseModels/DataResource.gd" id="1_qjxth"]
+
+[resource]
+script = ExtResource("1_qjxth")
+fechas = {}
+fechasMisionRegistro = {}
+misiones = {}

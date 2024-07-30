@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwjitqx3ash3u"]
+[gd_scene load_steps=7 format=3 uid="uid://bwjitqx3ash3u"]
 
 [ext_resource type="Script" path="res://Logica/AddMision.gd" id="1_31aww"]
 
@@ -27,6 +27,34 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 corner_detail = 12
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qeepf"]
+bg_color = Color(0.186971, 0.205889, 0.324806, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 7
+border_color = Color(0.768627, 0.0980392, 0.0980392, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pi4jk"]
+bg_color = Color(0.0192413, 0.023101, 0.0557864, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 7
+border_color = Color(0.192869, 0.0438292, 0.0100365, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 12
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dd5av"]
+
 [node name="AddMision" type="HBoxContainer"]
 offset_right = 376.0
 offset_bottom = 38.0
@@ -43,6 +71,9 @@ context_menu_enabled = false
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_styles/normal = SubResource("StyleBoxFlat_scij8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qeepf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pi4jk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dd5av")
 text = "  +  "
 
 [connection signal="focus_entered" from="TextEdit" to="." method="_on_text_edit_focus_entered"]

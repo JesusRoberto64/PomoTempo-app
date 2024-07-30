@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b43d4wo42dfqb"]
+
+[ext_resource type="Script" path="res://Logica/DataBaseModels/data_manager.gd" id="1_qrwb1"]
+[ext_resource type="Script" path="res://Logica/DataBaseModels/DataResource.gd" id="2_6x62p"]
+
+[node name="DataManager" type="Node"]
+script = ExtResource("1_qrwb1")
+data_resourse = ExtResource("2_6x62p")
