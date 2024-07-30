@@ -8,9 +8,10 @@ extends StateController
 @onready var timerSeterPomo = $Timer_Seter_Pomodoro
 @onready var timerSeterBreak = $Timer_Seter_Break
 
+#DataBase nodes
 @onready var Client = $Client
-
-@onready var DateControlller = $DateController
+@onready var DateController = $DateController
+@onready var DataMannager = $DataManager
 
 func _ready():
 	Pomodoro.pomodoro_alarm.connect(PanelMision.add_Pomodoro)
@@ -29,10 +30,11 @@ func _ready():
 	timerSeterPomo.set_Timer.connect(Pomodoro.set_Pomodoro_Timer)
 	timerSeterBreak.set_Timer.connect(Pomodoro.set_Break_Timer)
 	
-	init_Today(DateControlller, DateDisplay, PanelMision, Client)
+	DataMannager.load_Data()
+	init_Today(DateController, DateDisplay, PanelMision, Client)
 
 func on_Date_Change(_add):
-	currentDay = DateControlller.adjust_Days(currentDay,_add)
+	currentDay = DateController.adjust_Days(currentDay,_add)
 	update_date_display()
 	
 	if !Fechas01.registers.has(currentDay): 
@@ -59,6 +61,7 @@ func on_Add_Pomodoro():
 		update_date_display()
 		DateDisplay.forwardBtn.disabled = true
 		update_pomodoro_display()
+	DataMannager.save()
 
 func add_pomodoro_to_mision(_misionId: int):
 	Client.add_pomodoro_mision(_misionId)
@@ -70,3 +73,4 @@ func get_current_Mision_Id()->int:
 
 func keys_blocked(_Isinput: bool):
 	Pomodoro.keysBlocked = _Isinput
+

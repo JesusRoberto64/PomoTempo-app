@@ -38,6 +38,9 @@ func _on_forward_pressed():
 	set_Pomodoros_Mision(pomoArr[curPanel])
 
 func _on_selected_toggled(toggled_on):
+	if misiones.size() == 0: 
+		selectedBtn.button_pressed = false
+		return
 	if toggled_on:
 		curMision = curPanel
 		isMisionSelected = true
@@ -68,7 +71,8 @@ func set_Pomodoros_Mision(_pomodoros: int):
 
 func fetch_Misions_Pomodoros(_misiones: Array, _pomodoros: Array):
 	if _misiones.size() == 0:
-		print("Error empty array")
+		print("Error empty mision array")
+		isMisionSelected = false
 		return
 	if _misiones.size() != _pomodoros.size():
 		print("Error Misions and Pomodoros not syncroniced")
@@ -118,6 +122,8 @@ func reset_Panel():
 	pomoArr = resetArr
 
 func refresh_Pomodoros(_newPomodoros : Array):
+	if pomoArr.size() <= 0:
+		return
 	pomoArr = _newPomodoros
 	set_Pomodoros_Mision(pomoArr[curPanel])
 	

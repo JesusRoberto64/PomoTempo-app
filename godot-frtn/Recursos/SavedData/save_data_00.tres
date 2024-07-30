@@ -1,9 +1,38 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cklrfeiiuyjlp"]
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cmrn3f4jx1g62"]
 
-[ext_resource type="Script" path="res://Logica/DataBaseModels/DataResource.gd" id="1_qjxth"]
+[ext_resource type="Script" path="res://Logica/DataBaseModels/DataResource.gd" id="1_fjva4"]
 
 [resource]
-script = ExtResource("1_qjxth")
-fechas = {}
-fechasMisionRegistro = {}
-misiones = {}
+script = ExtResource("1_fjva4")
+fechas = {
+"2024-07-30": {
+"id": 0,
+"pomodoro": 4
+}
+}
+fechasMisionRegistro = {
+0: {
+0: 2,
+1: 2
+}
+}
+misiones = {
+0: {
+"id": 0,
+"nombre": "nueva misión"
+},
+1: {
+"id": 1,
+"nombre": "Escribir ensayo"
+}
+}
+misionResgistro = {
+0: {
+"mision": "nueva misión",
+"pomodoro": 4
+},
+1: {
+"mision": "Escribir ensayo",
+"pomodoro": 3
+}
+}

@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://qhkh5cl0ia86"]
+[gd_scene load_steps=15 format=3 uid="uid://qhkh5cl0ia86"]
 
 [ext_resource type="Script" path="res://Logica/main_screen.gd" id="1_45agk"]
 [ext_resource type="PackedScene" uid="uid://c6gk38tdoocjh" path="res://Escenas/Display/pomodoro.tscn" id="1_wi186"]
+[ext_resource type="PackedScene" uid="uid://b43d4wo42dfqb" path="res://Escenas/Protocols/data_manager.tscn" id="2_71wrq"]
 [ext_resource type="PackedScene" uid="uid://da540mfpl0xwf" path="res://Escenas/Display/fecha_display.tscn" id="2_hmeib"]
 [ext_resource type="PackedScene" uid="uid://dvwd1g1p04v7" path="res://Escenas/Display/alarm.tscn" id="2_jbx1w"]
 [ext_resource type="PackedScene" uid="uid://cr5qmqsvsp2fo" path="res://Escenas/Protocols/date_controller.tscn" id="3_2ujs4"]
@@ -25,7 +26,12 @@ offset_right = 152.0
 offset_bottom = 272.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_56vi5")
 
+[node name="DataManager" parent="." instance=ExtResource("2_71wrq")]
+
 [node name="DateController" parent="." instance=ExtResource("3_2ujs4")]
+
+[node name="Client" type="Node" parent="."]
+script = ExtResource("8_1tnpm")
 
 [node name="Fecha_Display" parent="." instance=ExtResource("2_hmeib")]
 position = Vector2(646, 16)
@@ -49,9 +55,6 @@ offset_left = 640.0
 offset_top = 496.0
 offset_right = 952.0
 offset_bottom = 534.0
-
-[node name="Client" type="Node" parent="."]
-script = ExtResource("8_1tnpm")
 
 [node name="DummieResponse" type="Node2D" parent="."]
 visible = false
