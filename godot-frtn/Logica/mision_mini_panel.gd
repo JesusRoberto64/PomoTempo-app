@@ -8,10 +8,9 @@ extends Node2D
 @onready var forwardBtn = $Forward
 @onready var selectedBtn = $Selected
 
-@export var misiones = ["Misión 1", "Misión 2", "Misión 3",
-						"Misión 4", "Misión 5", "Misión 6"]
+var misiones = []
 
-@export var pomoArr = [99,10,0,3,0,0]
+var pomoArr = []
 
 var curPanel = 0
 var curMision = 0
@@ -73,6 +72,7 @@ func fetch_Misions_Pomodoros(_misiones: Array, _pomodoros: Array):
 	if _misiones.size() == 0:
 		print("Error empty mision array")
 		isMisionSelected = false
+		print(_misiones)
 		return
 	if _misiones.size() != _pomodoros.size():
 		print("Error Misions and Pomodoros not syncroniced")

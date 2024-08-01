@@ -30,7 +30,7 @@ func _ready():
 	timerSeterPomo.set_Timer.connect(Pomodoro.set_Pomodoro_Timer)
 	timerSeterBreak.set_Timer.connect(Pomodoro.set_Break_Timer)
 	
-	DataMannager.load_Data()
+	#DataMannager.load_Data()
 	init_Today(DateController, DateDisplay, PanelMision, Client)
 
 func on_Date_Change(_add):
@@ -61,7 +61,7 @@ func on_Add_Pomodoro():
 		update_date_display()
 		DateDisplay.forwardBtn.disabled = true
 		update_pomodoro_display()
-	DataMannager.save()
+	#DataMannager.save()
 
 func add_pomodoro_to_mision(_misionId: int):
 	Client.add_pomodoro_mision(_misionId)

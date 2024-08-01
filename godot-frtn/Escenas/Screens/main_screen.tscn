@@ -714,15 +714,12 @@ metadata/_edit_vertical_guides_ = [176.0]
 
 [node name="Pomodoro" parent="." instance=ExtResource("1_wi186")]
 position = Vector2(200, 24)
-Pomodoro = 2.0
 
 [node name="Alarm" parent="." instance=ExtResource("2_jbx1w")]
 position = Vector2(200, 276)
 
 [node name="MisionMiniPanel" parent="." instance=ExtResource("4_on8gy")]
 position = Vector2(640, 113)
-misiones = []
-pomoArr = []
 metadata/_edit_horizontal_guides_ = [24.0]
 
 [node name="AddMision" parent="." instance=ExtResource("5_er0ne")]
@@ -772,6 +769,7 @@ theme_override_font_sizes/font_size = 14
 text = "F5: FullScreen"
 
 [node name="esc" type="Label" parent="ShortCutsCtrl"]
+visible = false
 layout_mode = 0
 offset_left = 16.0
 offset_top = 16.0
@@ -796,16 +794,15 @@ text = "Spacebar: Play"
 [node name="spacebar2" type="Label" parent="ShortCutsCtrl"]
 layout_mode = 0
 offset_left = 16.0
-offset_top = 40.0
+offset_top = 16.0
 offset_right = 133.0
-offset_bottom = 63.0
+offset_bottom = 39.0
 theme_override_colors/font_color = Color(0.0941176, 0.105882, 0.180392, 1)
 theme_override_fonts/font = ExtResource("11_6eylm")
 theme_override_font_sizes/font_size = 14
 text = "TAB: Skip"
 
 [node name="Tutorial" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
