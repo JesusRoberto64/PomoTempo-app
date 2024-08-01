@@ -805,6 +805,7 @@ theme_override_font_sizes/font_size = 14
 text = "TAB: Skip"
 
 [node name="Tutorial" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -815,6 +816,7 @@ size_flags_horizontal = 4
 script = ExtResource("14_pj4rn")
 
 [node name="Panel" type="Panel" parent="Tutorial"]
+modulate = Color(0.917647, 0.854902, 0.780392, 1)
 layout_mode = 1
 offset_left = 168.0
 offset_top = 190.0
