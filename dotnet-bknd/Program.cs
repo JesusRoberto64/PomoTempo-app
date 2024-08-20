@@ -14,7 +14,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 //The contex that points to the specific database on server 
 builder.Services.AddDbContext<AppPomoTempoContext>( options =>
   options.UseSqlServer(connectionString));
-//inyctar servicios
+//inyectar servicios
 builder.Services.AddScoped<IDbServices, DbServices>();
 builder.Services.AddScoped<IMisionService, MisionService>();
 
