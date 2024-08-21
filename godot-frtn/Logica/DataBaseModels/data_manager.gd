@@ -35,5 +35,3 @@ func save():
 		printerr("Can't save")
 	else:
 		print("Saved succesfully")
-
-

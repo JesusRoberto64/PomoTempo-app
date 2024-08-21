@@ -36,6 +36,8 @@ corner_radius_bottom_left = 14
 shadow_offset = Vector2(5, 5)
 anti_aliasing = false
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xp0oc"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jf8a2"]
 bg_color = Color(0.0941176, 0.105882, 0.180392, 1)
 border_width_left = 2
@@ -47,8 +49,6 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xp0oc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wslya"]
 shader = ExtResource("15_wnwa7")
@@ -859,8 +859,8 @@ offset_bottom = -13.053
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("15_1eybp")
-theme_override_styles/normal = SubResource("StyleBoxFlat_jf8a2")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xp0oc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jf8a2")
 text = "Enter >>"
 
 [node name="close" type="Button" parent="Tutorial/Panel"]
@@ -870,8 +870,8 @@ offset_top = 16.0882
 offset_right = 42.6993
 offset_bottom = 44.0882
 theme_override_fonts/font = ExtResource("15_1eybp")
-theme_override_styles/normal = SubResource("StyleBoxFlat_jf8a2")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xp0oc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jf8a2")
 text = "x"
 
 [node name="triangulo" type="TextureRect" parent="Tutorial"]

@@ -73,4 +73,3 @@ func get_current_Mision_Id()->int:
 
 func keys_blocked(_Isinput: bool):
 	Pomodoro.keysBlocked = _Isinput
-
