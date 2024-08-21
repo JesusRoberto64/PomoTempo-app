@@ -60,5 +60,3 @@ func _on_request_completed(result, response_code, headers, body):
 		else:
 			print("Unexpeted Data")
 			print(data_recived)
-
-

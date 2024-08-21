@@ -50,4 +50,3 @@ func get_pomodoro_array(_registerDay)->Array:
 		else:
 			pomodoroArr.append(0)
 	return pomodoroArr
-

@@ -15,10 +15,11 @@ grow_vertical = 2
 [node name="TestScripts" type="Node" parent="."]
 script = ExtResource("2_q5h25")
 
-[node name="AddMision" parent="." instance=ExtResource("2_y2w8i")]
+[node name="AddMision" parent="." node_paths=PackedStringArray("client") instance=ExtResource("2_y2w8i")]
 layout_mode = 0
 offset_left = 280.0
 offset_right = 578.0
+client = NodePath("../TestScripts")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 2
