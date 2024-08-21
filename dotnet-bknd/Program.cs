@@ -1,3 +1,9 @@
+/*
+Note:
+The use of this api was develop to use a complementary database for GODOT games or apps
+but it can be use in any client that uses http protocol 
+*/
+
 using dotnet_bknd;
 // Dependencies Entity Core, Core.Design, Core SQL server Nuget de Microsoft
 using Microsoft.EntityFrameworkCore;
