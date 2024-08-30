@@ -41,4 +41,3 @@ func stack_Data(data: Array):
 			var nombre = Label.new()
 			nombre.text = i.nombre
 			$HBoxContainer/MisionContainer.add_child(nombre)
-

@@ -20,4 +20,3 @@ func get_Day_Before(_formatDate)-> String:
 
 func get_Next_Day(_formatDate)-> String:
 	return adjust_Days(_formatDate, 1)
-

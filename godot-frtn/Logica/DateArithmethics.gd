@@ -41,7 +41,3 @@ func add_days(_date, days_to_add: int)-> String:
 			days_to_add -= 1
 	
 	return "%d-%02d-%02d" % [year, month, day]#{"year": year, "month": month, "day": day}
-
-
-
-

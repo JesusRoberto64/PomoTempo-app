@@ -145,6 +145,3 @@ func _on_text_edit_mouse_entered(): #This was connected on Godot Editor
 			continue
 		_on_cancel_pressed()
 		i.option_Button.hide()
-
-
-
