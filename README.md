@@ -15,6 +15,8 @@ PomoTempo funciona como un temporizador Pomodoro, donde puedes establecer mision
 
 ## 🛠️ Tecnología
 
+![Modelo de Front y Back](godot-frtn/Recursos/Imgs/pomotemposchema.png)
+
 - **Motor de juego**: Godot 4.3
 - **Backend**: ASP.NET Core
 - **Base de datos**: SQL Server
