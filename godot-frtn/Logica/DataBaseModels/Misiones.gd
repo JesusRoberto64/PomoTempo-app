@@ -1,6 +1,10 @@
 extends Node
 #Registro de las misiones seleccionadas estas se pueden borrar y agregar
 # Tiene que conservar su id como propiedad
+#{
+#	0 : {"id": 0, "nombre" : "nueva mision"},
+#	1 : {"id": 1, "nombre" : "Escribir ensayo" }
+#}
 var register = {}
 
 func get_Misiones()->Array:
