@@ -51,18 +51,6 @@ public class DbServices : IDbServices
         return _context.Model.ToDebugString();
     }
 
-    public List<string> HorasFromPomo()
-    {
-        List<string> horasLista = new List<string>();
-        var horas = _context.Pomodoros.AsNoTracking();
-        foreach(var hora in horas)
-        {
-           horasLista.Add(hora.Hora.ToString());
-        }
-
-        return horasLista; 
-    }
-
     public List<string> MisionesList()
     {
         List<string> misionesLista = new List<string>();
