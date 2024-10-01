@@ -4,5 +4,3 @@ extends Resource
 @export var fechasMisionRegistro = {}
 @export var misiones = {}
 @export var misionResgistro ={}
-
-

@@ -1,0 +1,168 @@
+[gd_scene load_steps=11 format=3 uid="uid://b6u7jg7p846ds"]
+
+[ext_resource type="FontFile" uid="uid://br40grkrm3qqp" path="res://Recursos/Fonts/Montserrat-BoldItalic.ttf" id="1_mx3t8"]
+[ext_resource type="Script" path="res://Logica/control_message.gd" id="1_sbtst"]
+[ext_resource type="PackedScene" uid="uid://b43d4wo42dfqb" path="res://Escenas/Protocols/data_manager.tscn" id="1_soiw6"]
+[ext_resource type="Script" path="res://Logica/Client/boot_loader.gd" id="1_tjorw"]
+[ext_resource type="Script" path="res://Logica/DataBaseModels/DataResource.gd" id="2_whlcd"]
+
+[sub_resource type="Animation" id="Animation_vmlvg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ControlMessage/Panel/Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ControlMessage/Panel:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1.07349, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ControlMessage/Panel:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1.18099, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_wtykn"]
+resource_name = "hide"
+
+[sub_resource type="Animation" id="Animation_kil7o"]
+resource_name = "show"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ControlMessage/Panel/Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ControlMessage/Panel:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0, 1.07349, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ControlMessage/Panel:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0, 1.18099, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5ts6u"]
+_data = {
+"RESET": SubResource("Animation_vmlvg"),
+"hide": SubResource("Animation_wtykn"),
+"show": SubResource("Animation_kil7o")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vw0ns"]
+bg_color = Color(0.0941176, 0.105882, 0.180392, 0.878431)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.768627, 0.0980392, 0.0980392, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_offset = Vector2(5, 5)
+anti_aliasing = false
+
+[node name="BootLoader" type="Node"]
+script = ExtResource("1_tjorw")
+data_resourse = ExtResource("2_whlcd")
+metadata/_edit_vertical_guides_ = [534.0]
+metadata/_edit_horizontal_guides_ = [288.0]
+
+[node name="DataManager" parent="." instance=ExtResource("1_soiw6")]
+
+[node name="ControlMessage" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_sbtst")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ControlMessage"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_5ts6u")
+}
+
+[node name="Panel" type="Panel" parent="ControlMessage"]
+modulate = Color(0.917647, 0.854902, 0.780392, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -278.0
+offset_top = -30.0
+offset_right = 317.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.07349, 1.18099)
+pivot_offset = Vector2(298, 32)
+theme_override_styles/panel = SubResource("StyleBoxFlat_vw0ns")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="ControlMessage/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 59.6186
+offset_top = -15.0651
+offset_right = -62.3813
+offset_bottom = 34.9349
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_mx3t8")
+theme_override_font_sizes/font_size = 21
+text = "Cargando..."
+horizontal_alignment = 1
+autowrap_mode = 2

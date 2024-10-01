@@ -36,6 +36,3 @@ func create_new_mision(_name: String):
 	MisionesRegister.register.merge(newMisionRegister)
 	var newMision = { Misiones.register.size(): {"nombre": _name, "id" : id} }
 	Misiones.register.merge(newMision)
-
-
-
