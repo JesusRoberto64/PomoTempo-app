@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://b6u7jg7p846ds"]
+[gd_scene load_steps=10 format=3 uid="uid://b6u7jg7p846ds"]
 
 [ext_resource type="FontFile" uid="uid://br40grkrm3qqp" path="res://Recursos/Fonts/Montserrat-BoldItalic.ttf" id="1_mx3t8"]
 [ext_resource type="Script" path="res://Logica/control_message.gd" id="1_sbtst"]
-[ext_resource type="PackedScene" uid="uid://b43d4wo42dfqb" path="res://Escenas/Protocols/data_manager.tscn" id="1_soiw6"]
 [ext_resource type="Script" path="res://Logica/Client/boot_loader.gd" id="1_tjorw"]
 [ext_resource type="Script" path="res://Logica/DataBaseModels/DataResource.gd" id="2_whlcd"]
 
@@ -110,8 +109,6 @@ script = ExtResource("1_tjorw")
 data_resourse = ExtResource("2_whlcd")
 metadata/_edit_vertical_guides_ = [534.0]
 metadata/_edit_horizontal_guides_ = [288.0]
-
-[node name="DataManager" parent="." instance=ExtResource("1_soiw6")]
 
 [node name="ControlMessage" type="Control" parent="."]
 layout_mode = 3

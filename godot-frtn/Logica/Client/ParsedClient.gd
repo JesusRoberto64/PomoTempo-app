@@ -1,7 +1,12 @@
 extends Node
 
 func create_New_Date(_date: String):
-	var newFecha = { _date : { "id": Fechas01.registers.size(), "pomodoro": 0 }}
+	#get array dates
+	var keys = Fechas01.registers.keys() 
+	#take the last key and id register
+	var id = Fechas01.registers.get(keys[keys.size()-1]).id 
+	
+	var newFecha = { _date : { "id": id+1, "pomodoro": 0 }} #add the last id +1
 	Fechas01.registers.merge(newFecha)
 	FechasMisionRegistro.register.merge({newFecha[_date].id : {}})
 
