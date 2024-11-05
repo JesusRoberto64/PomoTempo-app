@@ -11,8 +11,8 @@ func _ready() -> void:
 	
 	#Declare var
 	var fechas = {}
-	var misionRegistro = {}
 	var mision = {}
+	var misionRegistro = {}
 	var fechasMisionRegistro = {}
 	#fetch_from_db 
 	controlMessage.show_Message("Fetching Data")
@@ -22,7 +22,15 @@ func _ready() -> void:
 		"2024-09-27" : { "id": 5, "pomodoro": 10 }
 	}
 	
+	mision = {
+		0 : {"id": 0, "nombre": "Mision Start 4"},
+		1 : {"id": 2, "nombre": "Eliab y el Círculo del juego"},
+		2 : {"id": 3, "nombre": "ChuyRonin"}
+	}
 	
+	misionRegistro = {
+		
+	}
 	
 	
 	#get the saved archive
@@ -33,7 +41,7 @@ func _ready() -> void:
 		var error = ResourceSaver.save(res,SAVEPATH)
 		if error != OK:
 			controlMessage.show_Message("Can't save")
-			printerr("Can't save")
+			printerr("Can't save No file path exist")
 			return
 		else:
 			controlMessage.show_Message("Created new data")
@@ -45,8 +53,8 @@ func _ready() -> void:
 	res.fechasMisionRegistro = fechasMisionRegistro
 	res.fechas = fechas
 	
-	var error = ResourceSaver.save(res,SAVEPATH)
-	if error != OK:
+	var saveError = ResourceSaver.save(res,SAVEPATH)
+	if saveError != OK:
 		controlMessage.show_Message("Can't Update data")
 		printerr("Can't updte data")
 		return
