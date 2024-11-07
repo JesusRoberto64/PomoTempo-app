@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://b6u7jg7p846ds"]
+[gd_scene load_steps=11 format=3 uid="uid://b6u7jg7p846ds"]
 
 [ext_resource type="FontFile" uid="uid://br40grkrm3qqp" path="res://Recursos/Fonts/Montserrat-BoldItalic.ttf" id="1_mx3t8"]
 [ext_resource type="Script" path="res://Logica/control_message.gd" id="1_sbtst"]
 [ext_resource type="Script" path="res://Logica/Client/boot_loader.gd" id="1_tjorw"]
 [ext_resource type="Script" path="res://Logica/DataBaseModels/DataResource.gd" id="2_whlcd"]
+[ext_resource type="Script" path="res://Logica/Client/client_request.gd" id="5_a26vs"]
 
 [sub_resource type="Animation" id="Animation_vmlvg"]
 length = 0.001
@@ -163,3 +164,8 @@ theme_override_font_sizes/font_size = 21
 text = "Cargando..."
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="ClientRequest" type="HTTPRequest" parent="."]
+script = ExtResource("5_a26vs")
+
+[connection signal="request_completed" from="ClientRequest" to="ClientRequest" method="_on_request_completed"]
