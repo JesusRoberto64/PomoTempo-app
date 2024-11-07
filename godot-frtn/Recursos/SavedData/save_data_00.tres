@@ -1,9 +1,9 @@
 [gd_resource type="Resource" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://Logica/DataBaseModels/DataResource.gd" id="1_wlkq7"]
+[ext_resource type="Script" path="res://Logica/DataBaseModels/DataResource.gd" id="1_3te08"]
 
 [resource]
-script = ExtResource("1_wlkq7")
+script = ExtResource("1_3te08")
 fechas = {
 "2024-11-03": {
 "id": 3,
