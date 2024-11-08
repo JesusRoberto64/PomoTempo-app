@@ -5,7 +5,7 @@ func mision_Data(data)-> Dictionary:
 	
 	for i in data.size():
 		print(i)
-		#newDir.merge({i : {data}})
+		newDir.merge({i : data[i]})
 	print(newDir)
 	
 	return {}

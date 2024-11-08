@@ -29,9 +29,10 @@ func _ready() -> void:
 		controlMessage.show_Message(request.error)
 		set_Generic_Data()
 		return
-	else:
-		mision = manageData.mision_Data(request.data_recived)
-		return
+	mision = manageData.mision_Data(request.data_recived)
+	
+	request.fetch_Data("misionregisto")
+	
 	
 	
 	#get the saved archive
@@ -65,9 +66,9 @@ func to_Main_Screen():
 
 func set_Generic_Data():
 	fechas = {
-		"2024-11-04" : { "id": 3, "pomodoro": 7 },
-		"2024-11-05" : { "id": 4, "pomodoro": 6 },
-		"2024-11-06" : { "id": 5, "pomodoro": 10 }
+		"2024-11-05" : { "id": 3, "pomodoro": 7 },
+		"2024-11-06" : { "id": 4, "pomodoro": 6 },
+		"2024-11-07" : { "id": 5, "pomodoro": 10 }
 	}
 	mision = {
 		0 : {"id": 1, "nombre": "Mision Start 4"},

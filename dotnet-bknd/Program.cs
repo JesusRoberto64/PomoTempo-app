@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using dotnet_bknd.Repositories.Abstract;
 //The implementation of the interfases
 using dotnet_bknd.Repositories.Implementation;
+using dotnet_bknd.Models;
 
 //Basic app builder
 var builder = WebApplication.CreateBuilder(args);
@@ -23,6 +24,7 @@ builder.Services.AddDbContext<AppPomoTempoContext>( options =>
 //inyectar servicios
 builder.Services.AddScoped<IDbServices, DbServices>();
 builder.Services.AddScoped<IMisionService, MisionService>();
+builder.Services.AddScoped<IMisionRegistroService, MisionRegistroService>();
 
 //add controllers clases, those are declared on clases as an implementation (herency)
 builder.Services.AddControllers();

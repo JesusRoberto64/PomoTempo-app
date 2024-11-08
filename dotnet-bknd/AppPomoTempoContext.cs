@@ -10,7 +10,7 @@ public class AppPomoTempoContext : DbContext
     {
         //Console.WriteLine(context.Model.ToDebugString());
     }
-    
+    //Set with no key
     public DbSet<Fecha_Mision_Registro> FechaMisionRegistros {get; set;}
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -22,7 +22,7 @@ public class AppPomoTempoContext : DbContext
     
     public DbSet<Fechas> Fechas { get; set; }
     public DbSet<Misiones> Misiones {get; set;}
-    public DbSet<Mision_Registro> MisionRegistros {get; set;}
+    public DbSet<Mision_Registro> Mision_Registros {get; set;}
     
 
 }

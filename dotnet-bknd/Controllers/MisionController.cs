@@ -62,13 +62,14 @@ public class MisionController : ControllerBase
     }
 
     [HttpPatch("update")]
-    public IActionResult EditMision([FromBody]Misiones mision){
+    public IActionResult EditMision([FromBody]Misiones mision)
+    {
 
         var response = _misionService.EditMision(mision.Id,mision.Nombre!);
-        if (response.Success){
+        if (response.Success)
+        {
             return Ok(new { message = response.Message });
         }
-        Console.WriteLine("Bad request");
         return BadRequest(new { message = response.Message });
     }
 }
