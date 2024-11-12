@@ -14,6 +14,7 @@ public class AppPomoTempoContext : DbContext
     public DbSet<Fecha_Mision_Registro> FechaMisionRegistros {get; set;}
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        //modelBuilder.Entity<Mision_Registro>().ToTable("Mision_Registro");
         modelBuilder.Entity<Fecha_Mision_Registro>().HasNoKey();
         base.OnModelCreating(modelBuilder);
     }
@@ -22,7 +23,7 @@ public class AppPomoTempoContext : DbContext
     
     public DbSet<Fechas> Fechas { get; set; }
     public DbSet<Misiones> Misiones {get; set;}
-    public DbSet<Mision_Registro> Mision_Registros {get; set;}
+    public DbSet<Mision_Registro> Mision_Registro {get; set;}
     
 
 }

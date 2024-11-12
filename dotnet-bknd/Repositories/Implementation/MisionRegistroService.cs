@@ -1,4 +1,3 @@
-using System;
 using dotnet_bknd.Models;
 using dotnet_bknd.Repositories.Abstract;
 using Microsoft.EntityFrameworkCore;
@@ -21,7 +20,7 @@ public class MisionRegistroService : IMisionRegistroService
         }
         try
         {
-            _context.Mision_Registros.Add(mision);
+            _context.Mision_Registro.Add(mision);
             _context.SaveChanges();
 
             //Tomar la nueva ID del registro dela mision
@@ -29,7 +28,7 @@ public class MisionRegistroService : IMisionRegistroService
 
             return new IResponse { Success = true, Message = "Mision Registro agregada exitosamente", Id= newMisionRegistroId };
         }
-        catch (System.Exception)
+        catch (Exception)
         {
             
             return new IResponse{ Success = false, Message = "ERROR NO SE PUDO REGISTRAR MISIÓN" };
@@ -64,7 +63,7 @@ public class MisionRegistroService : IMisionRegistroService
             {
                 return new IResponse { Success = false, Message = "Id Inconrrecto" };   
             }
-            _context.Mision_Registros.Remove(misionRegistro);
+            _context.Mision_Registro.Remove(misionRegistro);
             _context.SaveChanges();
             return new IResponse { Success = true, Message = "Misión Borrada exitosamente" };
         }
@@ -98,7 +97,7 @@ public class MisionRegistroService : IMisionRegistroService
 
     public Mision_Registro GetMisionRegistroFromId(int id)
     {
-        var misionRegistro = _context.Mision_Registros.Find(id);
+        var misionRegistro = _context.Mision_Registro.Find(id);
         if ( misionRegistro == null )
         {
             return null!;
@@ -109,7 +108,7 @@ public class MisionRegistroService : IMisionRegistroService
     public List<Mision_Registro> MisionRegistroList()
     {
         List<Mision_Registro> misionRegistroLista = new List<Mision_Registro>();
-        var misionesRegistros = _context.Mision_Registros.AsNoTracking();
+        var misionesRegistros = _context.Mision_Registro.AsNoTracking();
         foreach (var misionRegistro in misionesRegistros)
         {   
             misionRegistroLista.Add(misionRegistro);
