@@ -31,5 +31,5 @@ func fetch_Data(endPoint: String):
 	var err = request(url+endPoint)
 	
 	if err != OK:
-		print("Error on sende")
+		print("Error on send")
 	
