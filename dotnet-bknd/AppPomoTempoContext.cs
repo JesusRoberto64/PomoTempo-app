@@ -5,13 +5,15 @@ namespace dotnet_bknd;
 
 public class AppPomoTempoContext : DbContext
 {
+    
     public AppPomoTempoContext(DbContextOptions<AppPomoTempoContext> options)
      :base(options)
     {
         //Console.WriteLine(context.Model.ToDebugString());
     }
+    
     //Set with no key
-    public DbSet<Fecha_Mision_Registro> FechaMisionRegistros {get; set;}
+    public DbSet<Fecha_Mision_Registro> Fecha_Mision_Registro {get; set;}
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         //modelBuilder.Entity<Mision_Registro>().ToTable("Mision_Registro");

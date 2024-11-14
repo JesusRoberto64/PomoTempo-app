@@ -58,5 +58,15 @@ public class FechaController : ControllerBase
     }
 
     //Continue
+    [HttpPatch]
+    public IActionResult EditFecha([FromBody]Fechas fechas)
+    {
+        var response = _fechasService.EditFecha(fechas.Id, fechas.Fecha, fechas.Pomodoros);
+        if ( response.Success )
+        {
+            return Ok(new { message = response.Message });
+        }
+        return BadRequest( new { message = response.Message });
+    }
 
 }

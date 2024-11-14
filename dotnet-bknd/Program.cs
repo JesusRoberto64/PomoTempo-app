@@ -12,6 +12,7 @@ using dotnet_bknd.Repositories.Abstract;
 //The implementation of the interfases
 using dotnet_bknd.Repositories.Implementation;
 using dotnet_bknd.Models;
+using dotnet_bknd.Controllers;
 
 //Basic app builder
 var builder = WebApplication.CreateBuilder(args);
@@ -25,6 +26,8 @@ builder.Services.AddDbContext<AppPomoTempoContext>( options =>
 builder.Services.AddScoped<IDbServices, DbServices>();
 builder.Services.AddScoped<IMisionService, MisionService>();
 builder.Services.AddScoped<IMisionRegistroService, MisionRegistroService>();
+builder.Services.AddScoped<IFechasService, FechasService>();
+builder.Services.AddScoped<IFechaMisionRegistroService, FechaMisionRegistroService>();
 
 //add controllers clases, those are declared on clases as an implementation (herency)
 builder.Services.AddControllers();
