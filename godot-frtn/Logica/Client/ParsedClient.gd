@@ -15,7 +15,8 @@ func add_pomodoro_Display(_todayDate: String):
 	register.merge({ "id": register.id, "pomodoro": register.pomodoro + 1 }, true)
 
 func add_pomodoro_mision(_misionId: int):
-	var register =  MisionesRegister.register[_misionId]
+	#var register =  MisionesRegister.register[_misionId]
+	var register = MisionesRegister.register.get(_misionId)
 	register.merge({ "mision": register.mision, "pomodoro": register.pomodoro+1 }, true)
 
 func add_pomo_fecha_mision(_misionId: int):

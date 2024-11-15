@@ -1,36 +1,36 @@
 [gd_resource type="Resource" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://Logica/DataBaseModels/DataResource.gd" id="1_froim"]
+[ext_resource type="Script" path="res://Logica/DataBaseModels/DataResource.gd" id="1_e1aar"]
 
 [resource]
-script = ExtResource("1_froim")
+script = ExtResource("1_e1aar")
 fechas = {
 "2024-09-25": {
-"id": 3.0,
+"id": 3,
 "pomodoro": 4.0
 },
 "2024-09-26": {
-"id": 4.0,
+"id": 4,
 "pomodoro": 6.0
 },
 "2024-09-27": {
-"id": 5.0,
+"id": 5,
 "pomodoro": 10.0
 }
 }
 fechasMisionRegistro = {
-3.0: {
-1.0: 2.0,
-2.0: 2.0
+3: {
+1: 2.0,
+2: 2.0
 },
-4.0: {
-2.0: 3.0,
-3.0: 3.0
+4: {
+2: 3.0,
+3: 3.0
 },
-5.0: {
-1.0: 2.0,
-2.0: 4.0,
-3.0: 1.0
+5: {
+1: 2.0,
+2: 4.0,
+3: 1.0
 }
 }
 misiones = {
@@ -47,4 +47,17 @@ misiones = {
 "nombre": "ChuyRonin"
 }
 }
-misionResgistro = {}
+misionResgistro = {
+1: {
+"mision": "Mision Start 4",
+"pomodoro": 0.0
+},
+2: {
+"mision": "Eliab y el Círculo del juego",
+"pomodoro": 0.0
+},
+3: {
+"mision": "ChuyRonin",
+"pomodoro": 0.0
+}
+}

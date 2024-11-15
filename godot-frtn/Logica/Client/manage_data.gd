@@ -9,21 +9,21 @@ func mision_Data(data)-> Dictionary:
 func mision_Register_Data(data)-> Dictionary:
 	var newDir = {}
 	for i in data:
-		newDir.merge({i.id : {"nombre": i.nombre, "pomodoro": i.pomodoro}})
-	return {}
+		newDir.merge({int(i.id) : {"mision": i.nombre, "pomodoro": i.pomodoro}})
+	return newDir
 
 func fechas_Data(data)-> Dictionary:
 	var newDir = {}
 	for i in data:
-		newDir.merge({i.fecha : { "id": i.id, "pomodoro": i.pomodoros }})
+		newDir.merge({i.fecha : { "id": int(i.id), "pomodoro": i.pomodoros }})
 	return newDir
 
 func fecha_Mision_Registro_Data(data)-> Dictionary:
 	var newDir = {}
 	for i in data:
-		newDir.merge({i.fecha_id: {}})
-		var regDir = newDir.get(i.fecha_id)
-		regDir.merge({i.mision_id: i.pomodoros})
+		newDir.merge({int(i.fecha_id): {}})
+		var regDir = newDir.get(int(i.fecha_id))
+		regDir.merge({int(i.mision_id): i.pomodoros})
 	return newDir
 
 func set_Generic_Data(dirVal):
