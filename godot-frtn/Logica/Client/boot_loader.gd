@@ -24,6 +24,7 @@ func _ready() -> void:
 	controlMessage.show_Message("Conectando...")
 	
 	mision = await get_Data("mision",manageData.mision_Data)
+	print(mision)
 	misionRegistro =  await get_Data("misionregistro", manageData.mision_Register_Data)
 	fechas = await  get_Data("fecha", manageData.fechas_Data)
 	fechasMisionRegistro = await get_Data("fechamisionregistro", manageData.fecha_Mision_Registro_Data)

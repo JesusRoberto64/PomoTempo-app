@@ -3,7 +3,10 @@ extends Node
 func mision_Data(data)-> Dictionary:
 	var newDir = {}
 	for i in data.size():
-		newDir.merge({i : data[i]})
+		#newDir.merge({i : data[i]})
+		newDir.merge({i : { "id": int(data[i].get("id")), "nombre" : data[i].get("nombre")}})
+		
+		
 	return newDir
 
 func mision_Register_Data(data)-> Dictionary:
@@ -29,7 +32,7 @@ func fecha_Mision_Registro_Data(data)-> Dictionary:
 func set_Generic_Data(dirVal):
 	print("USED GENRIC!!")
 	match dirVal:
-		"fechas":
+		"fecha":
 			return {
 				"2024-11-05" : { "id": 3, "pomodoro": 7 },
 				"2024-11-06" : { "id": 4, "pomodoro": 6 },
