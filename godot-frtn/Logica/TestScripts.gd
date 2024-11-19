@@ -123,4 +123,3 @@ func add_Record(_data):
 	newMision.client = self
 	newMision.call_deferred("set_Nombre",recordData)
 	colMisiones.add_child(newMision)
-	pass

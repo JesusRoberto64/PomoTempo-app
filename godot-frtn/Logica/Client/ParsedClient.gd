@@ -1,5 +1,7 @@
 extends Node
 
+@onready var httpClientSend = $HTTPClientSend
+
 func create_New_Date(_date: String):
 	#get array dates
 	var keys = Fechas01.registers.keys() 
@@ -14,8 +16,19 @@ func add_pomodoro_Display(_todayDate: String):
 	var register = Fechas01.registers[_todayDate]
 	register.merge({ "id": register.id, "pomodoro": register.pomodoro + 1 }, true)
 	
-	#Here needs to send all the data of Fecha and FechaMisionRegistro
-	#Check 
+	#  On server Here needs to create the record of Fecha and FechaMisionRegistro
+	#  Check if the records already exist so that they are not sent to the server 
+	var fechaDB = {}
+	httpClientSend.send_Request("GET", "fecha", register.id, {})
+	await httpClientSend.error_Return
+	if httpClientSend.error == null:
+		#  if theres not such record, procede to create the Fecha record
+		
+		pass
+	else:
+		fechaDB = httpClientSend.dataRecived
+	
+	#  if is a Mission Selected : create FechaMisionRegistro 
 	
 
 func add_pomodoro_mision(_misionId: int):

@@ -7,7 +7,7 @@ var data_recived = null
 signal error_Return
 
 func _ready() -> void:
-	timeout = 3.0
+	timeout = 2.0
 
 func error_Emmit():
 	error_Return.emit()
