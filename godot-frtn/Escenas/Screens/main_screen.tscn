@@ -708,6 +708,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_56vi5")
 [node name="Client" type="Node" parent="."]
 script = ExtResource("8_1tnpm")
 
+[node name="HTTPClienSend" type="HTTPRequest" parent="Client"]
+
 [node name="Fecha_Display" parent="." instance=ExtResource("2_hmeib")]
 position = Vector2(646, 16)
 metadata/_edit_vertical_guides_ = [176.0]

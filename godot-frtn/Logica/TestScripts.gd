@@ -53,7 +53,6 @@ func send_Request(data, _mode, _id):
 			var json = JSON.stringify(dataToSend)
 			var headers = ["Content-Type: application/json"]
 			HTTP.request("http://localhost:5074/api/mision/add",headers,HTTPClient.METHOD_POST, json)
-			pass
 
 #This fuction emmits a signal to be catch the sever response
 # using the await operator by the client. In this way the UI view

@@ -13,9 +13,12 @@ func create_New_Date(_date: String):
 func add_pomodoro_Display(_todayDate: String):
 	var register = Fechas01.registers[_todayDate]
 	register.merge({ "id": register.id, "pomodoro": register.pomodoro + 1 }, true)
+	
+	#Here needs to send all the data of Fecha and FechaMisionRegistro
+	#Check 
+	
 
 func add_pomodoro_mision(_misionId: int):
-	#var register =  MisionesRegister.register[_misionId]
 	var register = MisionesRegister.register.get(_misionId)
 	register.merge({ "mision": register.mision, "pomodoro": register.pomodoro+1 }, true)
 
@@ -37,7 +40,9 @@ func create_new_fecha_mision():
 
 func create_new_mision(_name: String):
 	#Primero registo cementerio
-	var id = MisionesRegister.register.size()
+	var arr = MisionesRegister.register.keys()
+	#get the last key and ++ int
+	var id = arr[arr.size()-1] + 1
 	var newMisionRegister = { id : {"mision": _name, "pomodoro": 0 } }
 	MisionesRegister.register.merge(newMisionRegister)
 	var newMision = { Misiones.register.size(): {"nombre": _name, "id" : id} }

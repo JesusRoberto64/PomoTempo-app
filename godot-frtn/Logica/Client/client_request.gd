@@ -3,7 +3,7 @@ extends HTTPRequest
 var url := "http://localhost:5074/api/" 
 var error = null
 var data_recived = null
-
+#IMPORTANT this signal is a piece to call the await prefix; see parent NODE(boot_loader)
 signal error_Return
 
 func _ready() -> void:

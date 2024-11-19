@@ -3,10 +3,7 @@ extends Node
 func mision_Data(data)-> Dictionary:
 	var newDir = {}
 	for i in data.size():
-		#newDir.merge({i : data[i]})
 		newDir.merge({i : { "id": int(data[i].get("id")), "nombre" : data[i].get("nombre")}})
-		
-		
 	return newDir
 
 func mision_Register_Data(data)-> Dictionary:

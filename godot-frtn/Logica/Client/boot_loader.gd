@@ -1,4 +1,6 @@
 extends Node
+#This script is used to initialize the data, the data is fetch from Data base
+#But if can´t reach the server ther idea is the use a generic data base(mangeData)
 
 @onready var controlMessage = $ControlMessage
 @onready var request = $ClientRequest
@@ -18,13 +20,11 @@ var misionRegistro = {}
 var fechasMisionRegistro = {}
 
 func _ready() -> void:
-	controlMessage.show_Message("Cargando...")
-	
 	#=========SEND REQUEST===============#
 	controlMessage.show_Message("Conectando...")
-	
+	#Remeber that the await prefix is used to call an async function
+	#which means inside get_Data() has await 
 	mision = await get_Data("mision",manageData.mision_Data)
-	print(mision)
 	misionRegistro =  await get_Data("misionregistro", manageData.mision_Register_Data)
 	fechas = await  get_Data("fecha", manageData.fechas_Data)
 	fechasMisionRegistro = await get_Data("fechamisionregistro", manageData.fecha_Mision_Registro_Data)
@@ -38,10 +38,10 @@ func _ready() -> void:
 		if error != OK:
 			controlMessage.show_Message("Can't save")
 			printerr("Can't save No file path exist")
-			return
+			return #WIP need to implement a generic data for all dictironary 
 		controlMessage.show_Message("Created new data")
 	
-	#Update
+	#Update the delared vars
 	res.misionResgistro = misionRegistro
 	res.misiones = mision
 	res.fechasMisionRegistro = fechasMisionRegistro
@@ -58,8 +58,10 @@ func _ready() -> void:
 
 func get_Data(endpoint: String, process_Func: Callable)-> Dictionary:
 	request.fetch_Data(endpoint)
+	#Rememeber that this await is a reponse from a SIGNAL in declare in request node
 	await request.error_Return
 	if request.error != null:
 		controlMessage.show_Message(request.error)
 		return manageData.set_Generic_Data(endpoint)
+	#remeber to use .call() func when using a callable functio
 	return process_Func.call(request.data_recived)

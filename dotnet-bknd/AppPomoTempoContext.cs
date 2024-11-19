@@ -16,7 +16,6 @@ public class AppPomoTempoContext : DbContext
     public DbSet<Fecha_Mision_Registro> Fecha_Mision_Registro {get; set;}
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        //modelBuilder.Entity<Mision_Registro>().ToTable("Mision_Registro");
         modelBuilder.Entity<Fecha_Mision_Registro>().HasNoKey();
         base.OnModelCreating(modelBuilder);
     }

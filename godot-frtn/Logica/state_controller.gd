@@ -45,8 +45,6 @@ func get_Pomodoro_Today_Arr(_date: String, _client: Node)->Array:
 func get_pomodoro_array(_registerDay)->Array:
 	var pomodoroArr = []
 	for id in Misiones.get_Misiones_Id():
-		print(typeof(id))
-		print(typeof(_registerDay.get(id)))
 		if _registerDay.has(id):
 			pomodoroArr.append(_registerDay[id])
 		else:

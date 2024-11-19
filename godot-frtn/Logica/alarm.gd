@@ -38,6 +38,3 @@ func _on_minus_pressed():
 	AudioServer.set_bus_volume_db(0,volume)
 	audioTest.play()
 	
-
-
-
