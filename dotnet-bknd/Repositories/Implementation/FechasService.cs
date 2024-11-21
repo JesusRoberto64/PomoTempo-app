@@ -15,6 +15,7 @@ public class FechasService : IFechasService
 
     public IResponse AddFecha(Fechas fechas)
     {
+        
         DateOnly? fecha = null;
         if (fechas.Fecha == fecha)
         {
@@ -22,15 +23,21 @@ public class FechasService : IFechasService
         }
         try
         {
-            _context.Fechas.Add(fechas);
+            var nuevaFecha = new Fechas{
+                Fecha = fechas.Fecha,
+                Pomodoros = fechas.Pomodoros
+            };
+            _context.Fechas.Add(nuevaFecha);
             _context.SaveChanges();
 
-            int newFecha = fechas.Id;
-            return new IResponse { Success = true, Message = "Fecha añadida", Id= newFecha};
+            int idFecha = GetIdFromFecha(fechas.Fecha);
+            //int idFecha = _context.Fechas.FirstOrDefault(f => f.Fecha == fechas.Fecha)?.Id ?? -1;
+            return new IResponse { Success = true, Message = "Fecha añadida", Id = idFecha};
         }
-        catch (Exception)
+        catch (Exception err)
         {
-            return new IResponse { Success = false, Message = "ERROR NO SE PUEDE REGISTRAT FECHA" };
+            Console.WriteLine(err);
+            return new IResponse { Success = false, Message = "ERROR NO SE PUEDE REGISTRAR FECHA" };
         }
     }
 
@@ -113,5 +120,15 @@ public class FechasService : IFechasService
             return null!;
         }
         return fecha;
+    }
+
+    public int GetIdFromFecha(DateOnly date)
+    { 
+        var fecha = _context.Fechas.FirstOrDefault(f => f.Fecha == date);
+        if ( fecha == null)
+        {
+            return -1;
+        }
+        return fecha.Id;
     }
 }

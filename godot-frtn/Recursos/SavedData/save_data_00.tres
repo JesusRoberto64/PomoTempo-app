@@ -1,36 +1,43 @@
 [gd_resource type="Resource" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://Logica/DataBaseModels/DataResource.gd" id="1_saeeb"]
+[ext_resource type="Script" path="res://Logica/DataBaseModels/DataResource.gd" id="1_386vq"]
 
 [resource]
-script = ExtResource("1_saeeb")
+script = ExtResource("1_386vq")
 fechas = {
-"2024-11-05": {
+"2024-09-25": {
 "id": 3,
-"pomodoro": 7
+"pomodoro": 4.0
 },
-"2024-11-06": {
+"2024-09-26": {
 "id": 4,
-"pomodoro": 6
+"pomodoro": 6.0
 },
-"2024-11-07": {
+"2024-09-27": {
 "id": 5,
-"pomodoro": 10
+"pomodoro": 10.0
+},
+"2024-11-21": {
+"id": 6,
+"pomodoro": 1
 }
 }
 fechasMisionRegistro = {
 3: {
-1: 2,
-2: 2
+1: 2.0,
+2: 2.0
 },
 4: {
-2: 3,
-3: 3
+2: 3.0,
+3: 3.0
 },
 5: {
-1: 2,
-2: 4,
-3: 1
+1: 2.0,
+2: 4.0,
+3: 1.0
+},
+6: {
+1: 1
 }
 }
 misiones = {
@@ -44,20 +51,20 @@ misiones = {
 },
 2: {
 "id": 3,
-"nombre": "ChuyRonin 66"
+"nombre": "ChuyRonin"
 }
 }
 misionResgistro = {
 1: {
 "mision": "Mision Start 4",
-"pomodoro": 0
+"pomodoro": 1.0
 },
 2: {
 "mision": "Eliab y el Círculo del juego",
-"pomodoro": 0
+"pomodoro": 0.0
 },
 3: {
 "mision": "ChuyRonin",
-"pomodoro": 0
+"pomodoro": 0.0
 }
 }

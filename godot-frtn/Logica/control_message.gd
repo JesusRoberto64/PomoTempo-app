@@ -6,7 +6,7 @@ extends Control
 func _ready() -> void:
 	$Panel.hide()
 
-func show_Message(text: String)-> void:
+func show_Message(text)-> void:
 	anim.play("show")
 	if typeof(text) != TYPE_STRING :
 		lab.text = "none string...{}"

@@ -41,7 +41,7 @@ public class FechaController : ControllerBase
         if ( response.Success )
         {
             int id = response.Id;
-            return Ok(id);
+            return Ok(new { message = response.Message, id = response.Id});
         }
         return BadRequest(new { message = response.Message });
     }

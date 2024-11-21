@@ -38,11 +38,18 @@ func _on_request_completed(_result, response_code, _headers, body):
 		controlMessage.show_Message(error)
 		return
 	
+	dataRecived = json.data
+	if dataRecived.has("status"):
+		if dataRecived["status"] == 404:
+			error = "Record not found"
+			controlMessage.show_Message(error)
+			error_Return.emit()
+			return
+	if dataRecived.has("Id"):
+		dataRecived = dataRecived["Id"]
+	
 	error = null
 	error_Return.emit()
-	dataRecived = json.data
-	print(json.data)
-	controlMessage.show_Message(dataRecived)
 
 func hide_Message():
 	controlMessage.hide_Message()
