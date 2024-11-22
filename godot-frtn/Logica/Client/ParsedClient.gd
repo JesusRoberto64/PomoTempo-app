@@ -26,7 +26,8 @@ func add_pomodoro_Display(_todayDate: String):
 		var newData = {"Id": register.id, "Fecha": _todayDate, "Pomodoros": 1}
 		httpClientSend.send_Request("CREATE", "fecha", register.id, newData)
 		await httpClientSend.error_Return
-		print(httpClientSend.dataRecived)
+		var newId = httpClientSend.dataRecived.Id
+		print(newId)
 		###
 		
 	else:
