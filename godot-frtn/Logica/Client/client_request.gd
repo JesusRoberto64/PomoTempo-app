@@ -29,8 +29,6 @@ func _on_request_completed(_result, response_code, _headers, body):
 
 func fetch_Data(endPoint: String):
 	var err = request(url+endPoint)
-	
 	if err != OK:
 		#print("Error on send")
 		pass
-	

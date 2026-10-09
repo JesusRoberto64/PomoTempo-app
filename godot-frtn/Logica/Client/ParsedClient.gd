@@ -6,7 +6,9 @@ func create_New_Date(_date: String):
 	#get array dates
 	var keys = Fechas01.registers.keys() 
 	#take the last key and id register
-	var id = Fechas01.registers.get(keys[keys.size()-1]).id 
+	var id = 0
+	if keys.size() > 0:
+		id = Fechas01.registers.get(keys[keys.size()-1]).id 
 	
 	var newFecha = { _date : { "id": id+1, "pomodoro": 0 }} #add the last id +1
 	Fechas01.registers.merge(newFecha)
@@ -61,7 +63,9 @@ func create_new_mision(_name: String):
 	#Primero registo cementerio
 	var arr = MisionesRegister.register.keys()
 	#get the last key and ++ int
-	var id = arr[arr.size()-1] + 1
+	var id = 0
+	if arr.size() > 0:
+		id = arr[arr.size()-1] + 1
 	var newMisionRegister = { id : {"mision": _name, "pomodoro": 0 } }
 	MisionesRegister.register.merge(newMisionRegister)
 	var newMision = { Misiones.register.size(): {"nombre": _name, "id" : id} }
