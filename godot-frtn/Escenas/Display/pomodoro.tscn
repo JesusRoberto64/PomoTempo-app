@@ -10,8 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bputo5oo416iw" path="res://Recursos/Sprites/break_pomodoro.png" id="5_oarlh"]
 [ext_resource type="Texture2D" uid="uid://cfo0464hibmiy" path="res://Recursos/Sprites/play_pause.png" id="6_xknxt"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u52i0"]
-texture = ExtResource("6_xknxt")
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uecyu"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vq8kp"]
 content_margin_bottom = 11.0
@@ -22,10 +21,10 @@ expand_margin_top = 3.0
 texture = ExtResource("6_xknxt")
 modulate_color = Color(0.244776, 0.244776, 0.244776, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uecyu"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u52i0"]
+texture = ExtResource("6_xknxt")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a10bn"]
-texture = ExtResource("5_f4w5r")
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gl5jc"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ungfl"]
 content_margin_bottom = 11.0
@@ -36,7 +35,8 @@ expand_margin_top = 3.0
 texture = ExtResource("5_f4w5r")
 modulate_color = Color(0.244776, 0.244776, 0.244776, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gl5jc"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a10bn"]
+texture = ExtResource("5_f4w5r")
 
 [node name="Pomodoro" type="Node2D"]
 script = ExtResource("1_ucvln")
@@ -82,10 +82,10 @@ offset_top = 160.0
 offset_right = 163.0
 offset_bottom = 208.0
 focus_mode = 1
-theme_override_styles/normal = SubResource("StyleBoxTexture_u52i0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uecyu")
 theme_override_styles/hover = SubResource("StyleBoxTexture_vq8kp")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_fx1f5")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_uecyu")
+theme_override_styles/normal = SubResource("StyleBoxTexture_u52i0")
 toggle_mode = true
 
 [node name="skip" type="Button" parent="."]
@@ -94,10 +94,10 @@ offset_top = 160.0
 offset_right = 291.0
 offset_bottom = 208.0
 focus_mode = 1
-theme_override_styles/normal = SubResource("StyleBoxTexture_a10bn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gl5jc")
 theme_override_styles/hover = SubResource("StyleBoxTexture_ungfl")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_uppam")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_gl5jc")
+theme_override_styles/normal = SubResource("StyleBoxTexture_a10bn")
 
 [node name="clack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_kj1jx")

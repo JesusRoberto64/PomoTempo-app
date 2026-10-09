@@ -15,7 +15,7 @@ func create_New_Date(_date: String):
 func add_pomodoro_Display(_todayDate: String):
 	var register = Fechas01.registers[_todayDate]
 	register.merge({ "id": register.id, "pomodoro": register.pomodoro + 1 }, true)
-	print(register)
+	return
 	#  On server Here needs to create the record of Fecha and FechaMisionRegistro
 	#  Check if the records already exist so that they are not sent to the server 
 	
@@ -27,11 +27,12 @@ func add_pomodoro_Display(_todayDate: String):
 		httpClientSend.send_Request("CREATE", "fecha", register.id, newData)
 		await httpClientSend.error_Return
 		var newId = httpClientSend.dataRecived.Id
-		print(newId)
+		
 		###
 		
 	else:
-		print(httpClientSend.dataRecived)
+		#print(httpClientSend.dataRecived)
+		pass
 	
 	#  if is a Mission Selected : create FechaMisionRegistro 
 	

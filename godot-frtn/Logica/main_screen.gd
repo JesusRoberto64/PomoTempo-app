@@ -23,7 +23,7 @@ func _ready():
 	AddMision.send_Mision.connect(PanelMision.add_Mision)
 	AddMision.on_Text_Edit.connect(keys_blocked)
 	
-	PanelMision.on_Add_Mision.connect(Client.create_new_mision)
+	PanelMision.on_Add_Mision.connect(Client.create_new_mision) # DISABLE
 	
 	DateDisplay.on_Date_Change.connect(on_Date_Change)
 	
@@ -52,10 +52,10 @@ func update_pomodoro_display():
 	PanelMision.refresh_Pomodoros(refreshPomo)
 
 func on_Add_Pomodoro():
-	Client.add_pomodoro_Display(today)
+	#Client.add_pomodoro_Display(today) # Desconectar el client
 	if PanelMision.isMisionSelected:
 		var curretMisionId = get_current_Mision_Id()
-		add_pomodoro_to_mision(curretMisionId)
+		add_pomodoro_to_mision(curretMisionId) # Client call
 	if currentDay != today:
 		currentDay = today
 		update_date_display()
@@ -63,6 +63,7 @@ func on_Add_Pomodoro():
 		update_pomodoro_display()
 	DataMannager.save()
 
+# Client mission
 func add_pomodoro_to_mision(_misionId: int):
 	Client.add_pomodoro_mision(_misionId)
 	Client.add_pomo_fecha_mision(_misionId)

@@ -721,15 +721,12 @@ metadata/_edit_vertical_guides_ = [176.0]
 
 [node name="Pomodoro" parent="." instance=ExtResource("1_wi186")]
 position = Vector2(200, 24)
-Pomodoro = 2.0
 
 [node name="Alarm" parent="." instance=ExtResource("2_jbx1w")]
 position = Vector2(200, 276)
 
 [node name="MisionMiniPanel" parent="." instance=ExtResource("4_on8gy")]
 position = Vector2(640, 113)
-misiones = []
-pomoArr = []
 metadata/_edit_horizontal_guides_ = [24.0]
 
 [node name="AddMision" parent="." instance=ExtResource("5_er0ne")]

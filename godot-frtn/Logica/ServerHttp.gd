@@ -43,7 +43,7 @@ func _on_request_completed(result, response_code, headers, body):
 	var body_text = body.get_string_from_utf8()
 	var json = JSON.new()
 	var error = json.parse(body_text)
-	print(response_code)
+	#print(response_code)
 	if error != OK:
 		print("JSON Parse Error: ", json.get_error_message(), " in ", body_text, " at line ", json.get_error_line())
 	else:

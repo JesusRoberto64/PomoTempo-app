@@ -32,7 +32,7 @@ func _on_request_completed(_result, response_code, _headers, body):
 	var err = json.parse(body_text)
 	
 	if err != OK:
-		print("JSON parse error: ", json.get_error_message(), " in ", body_text, " at line ", json.get_error_line(), " Response code: ", response_code)
+		#print("JSON parse error: ", json.get_error_message(), " in ", body_text, " at line ", json.get_error_line(), " Response code: ", response_code)
 		error = "ERROR: " + json.get_error_message() + " code: " + str(response_code)
 		error_Return.emit()
 		controlMessage.show_Message(error)

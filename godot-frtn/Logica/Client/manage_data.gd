@@ -43,9 +43,9 @@ func set_Generic_Data(dirVal):
 				}
 		"misionregistro":
 			return {
-				1 : { "mision": "Mision Start 4", "pomodoro": 0 },
+				1 : { "mision": "Mision Start 44", "pomodoro": 0 },
 				2 : { "mision": "Eliab y el Círculo del juego", "pomodoro": 0 },
-				3 : { "mision": "ChuyRonin", "pomodoro": 0 }
+				3 : { "mision": "ChuyRonin 77", "pomodoro": 0 }
 				}
 		"fechamisionregistro":
 			return {

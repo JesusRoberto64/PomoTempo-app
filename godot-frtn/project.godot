@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Godot-frtn"
-run/main_scene="res://Escenas/Protocols/boot_loader.tscn"
+run/main_scene="res://Escenas/Screens/main_screen.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -75,4 +75,4 @@ skip={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.721442, 0.901184, 0.950791, 1)
+environment/defaults/default_clear_color=Color(0.73178, 0.756259, 0.875188, 1)

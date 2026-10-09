@@ -59,9 +59,9 @@ func _ready() -> void:
 func get_Data(endpoint: String, process_Func: Callable)-> Dictionary:
 	request.fetch_Data(endpoint)
 	#Rememeber that this await is a reponse from a SIGNAL in declare in request node
-	await request.error_Return
-	if request.error != null:
-		controlMessage.show_Message(request.error)
-		return manageData.set_Generic_Data(endpoint)
+	#await request.error_Return
+	#if request.error != null:
+		#controlMessage.show_Message(request.error)
+		#return manageData.set_Generic_Data(endpoint)
 	#remeber to use .call() func when using a callable functio
 	return process_Func.call(request.data_recived)

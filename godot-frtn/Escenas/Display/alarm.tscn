@@ -9,9 +9,6 @@
 [ext_resource type="AudioStream" uid="uid://cnoxun8vpt3su" path="res://Recursos/Sound/1_sfxr.wav" id="4_vyayn"]
 [ext_resource type="AudioStream" uid="uid://caki3pmhtkfyq" path="res://Recursos/Sound/alarm_gb.wav" id="8_4mox5"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1ydu6"]
-texture = ExtResource("3_5mfua")
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l4el2"]
 content_margin_bottom = 21.0
 texture = ExtResource("3_5mfua")
@@ -21,8 +18,8 @@ expand_margin_top = 3.0
 texture = ExtResource("3_5mfua")
 modulate_color = Color(0.243137, 0.243137, 0.243137, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1hh0s"]
-texture = ExtResource("3_ljhil")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1ydu6"]
+texture = ExtResource("3_5mfua")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8dtjq"]
 content_margin_bottom = 21.0
@@ -32,6 +29,9 @@ expand_margin_top = 3.0
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tge7i"]
 texture = ExtResource("3_ljhil")
 modulate_color = Color(0.243137, 0.243137, 0.243137, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1hh0s"]
+texture = ExtResource("3_ljhil")
 
 [sub_resource type="Animation" id="Animation_w256x"]
 length = 0.001
@@ -173,18 +173,18 @@ offset_left = 48.0
 offset_top = 280.0
 offset_right = 128.0
 offset_bottom = 311.0
-theme_override_styles/normal = SubResource("StyleBoxTexture_1ydu6")
 theme_override_styles/hover = SubResource("StyleBoxTexture_l4el2")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_rpr6b")
+theme_override_styles/normal = SubResource("StyleBoxTexture_1ydu6")
 
 [node name="Minus" type="Button" parent="."]
 offset_left = 152.0
 offset_top = 280.0
 offset_right = 232.0
 offset_bottom = 312.0
-theme_override_styles/normal = SubResource("StyleBoxTexture_1hh0s")
 theme_override_styles/hover = SubResource("StyleBoxTexture_8dtjq")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_tge7i")
+theme_override_styles/normal = SubResource("StyleBoxTexture_1hh0s")
 
 [node name="Bell" type="Sprite2D" parent="."]
 visible = false

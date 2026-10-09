@@ -26,7 +26,7 @@ func load_Data():
 	Fechas01.registers = resource.fechas
 	
 	send_message.emit("Data loaded")
-	print("Data loaded")
+	#print("Data loaded")
 
 func save():
 	var res = data_resourse.new()

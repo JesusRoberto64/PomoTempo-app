@@ -36,8 +36,10 @@ func get_Pomodoro_Date_Arr(_date: String)->Array:
 func get_Pomodoro_Today_Arr(_date: String, _client: Node)->Array:
 	var fechas = Fechas01.registers
 	var fechaMision = FechasMisionRegistro.register
+	
 	if !fechas.has(_date):
 		_client.create_New_Date(_date)
+	
 	var idDay = fechas[_date].id
 	var regiterDay = fechaMision[idDay]
 	return get_pomodoro_array(regiterDay)
